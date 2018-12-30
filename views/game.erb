@@ -10,7 +10,14 @@
           class="<%= tile[:style] %> <%= tile[:bgstyle] %>"
           data-pos="<%= coords.join(',') %>"
           data-player="<%= coords == player.position %>">
-            <%= tile[:symbol] %>
+            <div class="tile-container">
+              <%= tile[:symbol] %>
+              <% @state[:enemies].map { |e| e.position }.each_with_index do |enemy_position, i| %>
+                <% if enemy_position == coords && tile[:bgstyle] == 'bgmarker' %>
+                  <div class="enemy-index"><%= i + 1 %></div>
+                <% end %>
+              <% end %>
+            </div>
         </td>
       <% end %>
       </tr>

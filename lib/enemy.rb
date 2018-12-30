@@ -6,6 +6,6 @@ require_relative 'unit'
 
 class Enemy < Unit
   def initialize
-    super(symbol: 'µ', style: 'enemy', hp: 1)
+    super(symbol: 'µ', name: 'Goblin', style: 'enemy', hp: 1)
   end
 end

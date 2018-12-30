@@ -6,10 +6,11 @@
 
 class Unit
   attr_accessor :position
-  attr_reader :id, :symbol, :style, :hp, :ap
+  attr_reader :symbol, :name, :style, :hp, :ap
 
-  def initialize(symbol: ' ', style: '', hp: 10, ap: 10)
+  def initialize(symbol: ' ', name: 'generic unit', style: '', hp: 10, ap: 1)
     @symbol = symbol
+    @name = name
     @style = style
     @position = [0,0]
     @hp = hp

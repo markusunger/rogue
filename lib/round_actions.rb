@@ -72,7 +72,9 @@ module RoundActions
       enemy.move(pick, @map) unless anyone_there?(pick)
       ''
     elsif decision == :attack
-      "Enemy attacks the player!"
+      result = Combat::attack(enemy, @player, @map, @enemies)
+      @loss_state = false if result[:kill]
+      result[:msg]
     end
   end
 
@@ -83,6 +85,7 @@ module RoundActions
         when :enemy
           skill = @player.active_skill
           enemy = @enemies[slot.to_i - 1]
+          return 'No valid enemy selected.' unless enemy
           result = Combat::skill(skill, @player, enemy, @map, @enemies)
           msg = result[:msg]
         when :self  then msg = @player.use_skill(@player)
@@ -99,6 +102,7 @@ module RoundActions
       target_tiles.each do |target|
         @map.add_entity(target, :marker)
       end
+      ''
     end
   end
 

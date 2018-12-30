@@ -8,7 +8,7 @@ class Combat
     defender.take_dmg(attacker.deal_dmg)
     handle_dead_enemy(defender, enemies, map) if defender.dead?
 
-    {msg: "#{attacker.deal_dmg} damage dealt.", kill: defender.dead?}
+    {msg: "#{attacker.name} deals #{attacker.deal_dmg} damage.", kill: defender.dead?}
   end
 
   def self.skill(skill, attacker, defender, map, enemies)
@@ -16,13 +16,13 @@ class Combat
     skill.effect(defender)
     handle_dead_enemy(defender, enemies, map) if defender.dead?
 
-    {msg: "Damage dealt.", kill: defender.dead?}
+    {msg: "Player has used skill.", kill: defender.dead?}
   end
 
   def self.handle_dead_enemy(defender, enemies, map)
     del = enemies.find_index { |e| e.position == defender.position }
-    kill_site = enemies[del].position
-    enemies.delete_at(del)
+    kill_site = defender.position
+    enemies.delete_at(del) if del
     map.add_entity(kill_site, :remains) # add splatter effect for dead enemies
   end
 end

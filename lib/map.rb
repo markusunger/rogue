@@ -130,9 +130,9 @@ class Map
     if tile.entities.size > 0
       e = tile.entities.first # TODO: order for multiple entities
       {
-        symbol: @entities[e][:symbol],
-        style: @entities[e][:style],
-        bgstyle: @entities[e][:bgstyle]
+        symbol: @entities[e][:symbol] || tile.symbol,
+        style: @entities[e][:style] || tile.style,
+        bgstyle: @entities[e][:bgstyle] || tile.bgstyle
       }
     else
     {

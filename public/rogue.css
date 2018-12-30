@@ -23,6 +23,17 @@ span.energy-cost-no {
   color: #722e2e;
 }
 
+div.tile-container {
+  position: relative;
+}
+
+div.enemy-index {
+  font-size: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 hr {
   display: inline-block;
   height: 8px;

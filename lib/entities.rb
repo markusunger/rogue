@@ -7,8 +7,8 @@ module Entities
         bgstyle: 'bgremains'
       },
       marker: {
-        symbol: '',
-        style: '',
+        symbol: nil,
+        style: nil,
         bgstyle: 'bgmarker'
       }
     }

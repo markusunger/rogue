@@ -16,7 +16,8 @@ class Player < Unit
   ENERGY_PER_TURN = 1 # energy points to gain at the start of each round
 
   def initialize
-    super(symbol: '@', style: 'player')
+    super(symbol: '@', name: 'Player', style: 'player')
+    @ap = 1 # basic AP for the player when not using skills
     @energy = STARTING_ENERGY
     @energy_per_turn = ENERGY_PER_TURN
     @block = 0
