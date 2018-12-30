@@ -17,15 +17,19 @@ class Level
 
   attr_reader :controller, :win_state
 
-  def initialize
+  def initialize(floor_number)
+    @floor_number = floor_number
     @log = Log.new
     @controller = ActionController.new
-    prepare_map
+    no_of_enemies = (floor_number / 2)
+    no_of_enemies += 1 if no_of_enemies == 0
+    prepare_map(no_of_enemies)
   end
 
   def reset
     prepare_map
     ''
+    @level.execute_actions
   end
 
   def execute_actions
@@ -49,17 +53,18 @@ class Level
       height: @map.height,
       log: @log,
       player: @player,
-      enemies: @enemies
+      enemies: @enemies,
+      floor_number: @floor_number
     }
   end
 
   private
 
-  def prepare_map
+  def prepare_map(no_of_enemies)
     @map = Map.new(8,8)
     @player = Player.new
     @enemies = []
     init_player_position
-    add_enemies(2)
+    add_enemies(no_of_enemies)
   end
 end

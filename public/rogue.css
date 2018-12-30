@@ -163,6 +163,12 @@ div#map-window {
   flex-grow: 1;
 }
 
+#map-window p {
+  color: #505656;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 16px;
+}
+
 div#log-window {
   margin: 0 15px 15px 15px;
   background-color: #3c4444;

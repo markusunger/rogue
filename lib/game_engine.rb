@@ -7,21 +7,19 @@ require_relative 'level'
 
 class GameEngine
   def initialize
-    @level = Level.new
+    @floor_number = 1
+    @level = Level.new(@floor_number)
   end
 
   def request(command, param = nil)
     @level.controller.enqueue(command, param)
-    # immediately execute the queue if reset is triggered
-    @level.execute_actions if command == 'reset'
   end
 
   def process_turn
     @level.process_turn
     if @level.win_state
-      @level.controller.enqueue('reset')
-      @level.controller.enqueue('win')
-      @level.execute_actions
+      @floor_number += 1
+      @level = Level.new(@floor_number)
     end
   end
 
