@@ -1,0 +1,191 @@
+html, body {
+  background-color: #212B30;
+  color: #C7E8E9;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 24px;
+}
+
+h1 {
+  color: #AA9881;
+}
+
+span.key {
+  color: rgb(241, 216, 146);
+  background-color: #364751;
+  padding: 0.15rem;
+}
+
+span.energy-cost-yes {
+  color: #376b51;
+}
+
+span.energy-cost-no {
+  color: #722e2e;
+}
+
+hr {
+  display: inline-block;
+  height: 8px;
+  border: 0;
+  margin: 1em 0;
+  padding: 0;
+}
+
+table {
+  border: 3px solid black;
+  border-spacing: 0;
+}
+
+td {
+  text-align: center;
+  vertical-align: center;
+  width: 40px;
+  height: 40px;
+  border: 2px dashed #0d161b;
+  padding: 0;
+  margin: 0;
+}
+
+td:hover {
+  background-color: #364751;
+  cursor: pointer
+}
+
+td.wall1 {
+  color: #687272;
+}
+
+td.wall2 {
+  color: #3c4444;
+}
+
+td.wall3 {
+  color: #505656;
+}
+
+td.floor1 {
+  color: #222e35;
+}
+
+td.floor2 {
+  color: #283238;
+}
+
+td.floor3 {
+  color: #1b252d;
+}
+
+td.bgfloor1 {
+  background-color: rgb(19, 26, 34);
+}
+
+.wall1, .wall2, .wall3 {
+  background-color: #090f13;
+  border: 2px dashed #101b22;
+}
+
+td.player {
+  color: #4b8fdd;
+  text-shadow: 0px 0px 8px #4e7991;
+}
+
+td.enemy {
+  color: #a11414;
+  text-shadow: 0px 0px 4px #794e4e;
+}
+
+td.exit1 {
+  color: #8d8557;
+}
+
+td.bgexit1 {
+  background-color: #272416;
+}
+
+td.remains {
+  color: #3b0d0d;
+}
+
+td.bgremains {
+  background-color: #1d0808;
+}
+
+td.light_normal_0 {
+  background-color: rgba(30, 44, 53, 0.5);
+}
+
+td.light_normal_1 {
+  background-color: rgba(30, 44, 53, 0.3);
+}
+
+td.light_normal_2 {
+  background-color: rgba(30, 44, 53, 0.1);
+}
+
+.panel {
+  background-color: #10191e;
+  padding: 1rem;
+  border: 0.1rem solid black;
+}
+
+#main-container {
+  display: grid;
+  grid-gap: 15px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#game-window {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 15px;
+  height: 600px;
+}
+
+#info-window {
+  width: 440px;
+  height: 600px;
+  line-height: 115%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+div#map-window {
+  font-family: 'Source code Pro', monospace;
+  font-weight: 700;
+  font-size: 30px;
+  height: 534px;
+  flex-grow: 1;
+}
+
+div#log-window {
+  margin: 0 15px 15px 15px;
+  background-color: #3c4444;
+  color: #10191e;
+  box-shadow: inset 2px 2px 6px 5px rgba(11, 16, 24, 0.5);
+  font-size: 12px;
+  line-height: 18px;
+  padding: 0.4rem;
+  height: 9rem;
+  overflow: auto;
+  display: flex;
+  flex-direction:column-reverse;
+}
+
+div#stats-window {
+  margin: 0 15px 15px 15px;
+  font-size: 12px;
+  padding: 0.4rem;
+}
+
+div#skill-window {
+  margin: 0 15px 15px 15px;
+  font-size: 12px;
+  line-height: 18px;
+  padding: 0.4rem;
+}

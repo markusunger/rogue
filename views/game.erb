@@ -1,0 +1,47 @@
+<% map = @state[:map] %>
+<% player = @state[:player] %>
+<div id="map-window" class="panel">
+  <table>
+    <% @state[:width].times do |y| %>
+      <tr>
+      <% @state[:height].times do |x| %>
+        <% tile, coords = map.next %>
+        <td 
+          class="<%= tile[:style] %> <%= tile[:bgstyle] %>"
+          data-pos="<%= coords.join(',') %>"
+          data-player="<%= coords == player.position %>">
+            <%= tile[:symbol] %>
+        </td>
+      <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div id="info-window">
+  <div id="stats-window" class="panel">
+    Health: <%= player.hp %><br>
+    Energy: <%= player.energy %> (+<%= player.energy_per_turn %>/turn)<br>
+    Block: <%= player.block %> (+<%= player.block_per_turn %>/turn)
+  </div>
+
+  <div id="skill-window" class="panel">
+    <% player.skills.each_with_index do |skill, i| %>
+      <p>
+        <span class="key"><%= i+1 %></span> <%= skill.name %>
+        (<span class="<%= player.energy >= skill.cost ? "energy-cost-yes" : "energy-cost-no" %>"><%= skill.cost %></span>)<br>
+        &nbsp; <%= skill.description %>
+      </p>
+    <% end %>
+  </div>
+
+  <div id="log-window" class="panel">
+    <p id="log">
+    <% @state[:log].each do |entry| %>
+      <%= entry %><br>
+    <% end %>
+    </p>
+  </div>
+</div>
+
+<script src="/game.js"></script>
