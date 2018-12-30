@@ -5,6 +5,11 @@ module Entities
         symbol: '░',
         style: 'remains',
         bgstyle: 'bgremains'
+      },
+      marker: {
+        symbol: '',
+        style: '',
+        bgstyle: 'bgmarker'
       }
     }
   end

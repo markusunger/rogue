@@ -15,6 +15,10 @@ class GameEngine
     @level.controller.enqueue(command, param)
   end
 
+  def process_queue
+    @level.execute_actions
+  end
+
   def process_turn
     @level.process_turn
     if @level.win_state

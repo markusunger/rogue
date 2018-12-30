@@ -26,13 +26,8 @@ class Level
     prepare_map(no_of_enemies)
   end
 
-  def reset
-    prepare_map
-    ''
-    @level.execute_actions
-  end
-
   def execute_actions
+    reset_markers
     messages = @controller.execute(self)
     messages.each { |m| @log << m if m.size > 0 }
   end

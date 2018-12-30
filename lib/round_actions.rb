@@ -76,8 +76,39 @@ module RoundActions
     end
   end
 
-  def use_skill(slot)
-    @player.use_skill(slot.to_i)
+  def handle_skill(slot)
+    if @player.active_skill
+      msg = nil
+      case @player.active_skill.target
+        when :enemy
+          skill = @player.active_skill
+          enemy = @enemies[slot.to_i - 1]
+          result = Combat::skill(skill, @player, enemy, @map, @enemies)
+          msg = result[:msg]
+        when :self  then msg = @player.use_skill(@player)
+      end
+      @player.active_skill = nil
+      process_turn
+      msg
+    else
+      skill_index = slot.to_i - 1
+      skill = @player.skills[skill_index]
+      return "Not enough energy to use #{skill.name}." if skill.cost > @player.energy
+      @player.active_skill = skill
+      target_tiles = @map.active_tiles_in_range(@player.position, skill.range)
+      target_tiles.each do |target|
+        @map.add_entity(target, :marker)
+      end
+    end
+  end
+
+  def reset_active_skill
+    @player.active_skill = nil
+    ''
+  end
+
+  def reset_markers
+    @map.remove_all_entities(:marker)
   end
 
   def check_for_win_state

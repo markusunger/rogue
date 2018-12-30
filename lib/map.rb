@@ -98,8 +98,20 @@ class Map
     paths.path_to(from_position, player_position)
   end
 
+  def active_tiles_in_range(position, range)
+    paths = Pathfinder.new(self)
+    paths
+      .distances_from(position)
+      .select { |k, v| v <= range && @map[k].walkable? }
+      .map { |k, v| k }
+  end
+
   def add_entity(position, name)
     @map[position].entities << name
+  end
+
+  def remove_all_entities(name)
+    @map.each { |_, tile| tile.entities.delete(name) }
   end
 
   def draw(&block)

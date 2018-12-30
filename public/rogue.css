@@ -79,6 +79,10 @@ td.bgfloor1 {
   background-color: rgb(19, 26, 34);
 }
 
+td.bgmarker {
+  background-color: rgb(21, 34, 36);
+}
+
 .wall1, .wall2, .wall3 {
   background-color: #090f13;
   border: 2px dashed #101b22;

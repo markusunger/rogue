@@ -10,7 +10,6 @@ class ActionController
   end
 
   def execute(level)
-    @level = level
     messages = []
 
     until @queue.empty? do
@@ -18,15 +17,17 @@ class ActionController
 
       case action[:command]
       when 'reset'
-        messages << @level.reset
+        messages << level.reset
       when 'act_player'
-        messages << @level.act_player(action[:param])
+        messages << level.act_player(action[:param])
       when 'act_enemy'
-        messages << @level.act_enemy(action[:param])
-      when 'use_skill'
-        messages << @level.use_skill(action[:param])
+        messages << level.act_enemy(action[:param])
+      when 'handle_skill'
+        messages << level.handle_skill(action[:param])
+      when 'reset_active_skill'
+        messages << level.reset_active_skill
       when 'check_for_win_state'
-        messages << @level.check_for_win_state
+        messages << level.check_for_win_state
       when 'win'
         messages << "You climb deeper down ..."
       end

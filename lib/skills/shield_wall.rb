@@ -5,6 +5,8 @@ class ShieldWall < Skill
     super(
       name: 'Shield Wall',
       cost: 5,
+      range: 0,
+      target: :self,
       description: '+5 block each turn'
     )
   end

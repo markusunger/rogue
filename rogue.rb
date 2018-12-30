@@ -21,13 +21,14 @@ get '/act/:position' do  # handle player movement/attack
   redirect to('/')
 end
 
-get '/use/:slot' do # handle skill usage
-  settings.engine.request('use_skill', params['slot'])
-  settings.engine.process_turn
+get '/skill/:slot' do # handle skill usage
+  settings.engine.request('handle_skill', params['slot'])
+  settings.engine.process_queue
   redirect to('/')
 end
 
-get '/reset' do  # trigger a reset with new floor generation
-  settings.engine.request('reset')
-  redirect to ('/')
+get '/skillreset' do # resets markers and active player skill
+  settings.engine.request('reset_active_skill')
+  settings.engine.process_queue
+  redirect to('/')
 end
