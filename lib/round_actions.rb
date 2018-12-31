@@ -63,19 +63,25 @@ module RoundActions
   end
   
   def act_enemy(position)
+    message = ''
     enemy = @enemies.find { |e| e.position == position }
-    return '' unless enemy # check if enemy died during the round 
+    return message unless enemy # check if enemy died during the round
     decision = @map.adjacent?(enemy.position, @player.position) ? :attack : :move
+    if enemy.is_stunned?
+      enemy.process_turn
+      return message
+    end
 
     if decision == :move
       pick = @map.closer_to_player(enemy.position, @player.position)
       enemy.move(pick, @map) unless anyone_there?(pick)
-      ''
     elsif decision == :attack
       result = Combat::attack(enemy, @player, @map, @enemies)
       @loss_state = false if result[:kill]
-      result[:msg]
+      message << result[:msg]
     end
+    enemy.process_turn
+    message
   end
 
   def handle_skill(slot)

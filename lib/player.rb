@@ -21,11 +21,12 @@ class Player < Unit
     @ap = 1 # basic AP for the player when not using skills
     refresh
 
-    @skills = [ShieldWall.new, SpearThrow.new]
+    @skills = [ShieldWall.new, SpearThrow.new, ShieldBash.new, Pierce.new]
     @active_skill = nil
   end
 
   def process_turn
+    super
     @energy += @energy_per_turn
     @block += @block_per_turn
   end
