@@ -28,6 +28,8 @@ class ActionController
         messages << level.reset_active_skill
       when 'check_for_win_state'
         messages << level.check_for_win_state
+      when 'check_for_loss_state'
+        messages << level.check_for_loss_state
       when 'win'
         messages << "You climb deeper down ..."
       end

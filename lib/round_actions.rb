@@ -119,4 +119,9 @@ module RoundActions
     @win_state = @player.position == @map.exit_position ? true : false
     ''
   end
+
+  def check_for_loss_state
+    @loss_state = @player.dead?
+    ''
+  end
 end

@@ -42,4 +42,12 @@ class Player < Unit
       skill.effect(target)
     end
   end
+
+  def take_dmg(dmg)
+    @block -= dmg
+    if @block < 0
+      @hp += @block
+      @block = 0
+    end
+  end
 end

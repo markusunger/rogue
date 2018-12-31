@@ -36,6 +36,7 @@ class Level
     @enemies.each do |enemy|
       @controller.enqueue('act_enemy', enemy.position)
     end
+    @controller.enqueue('check_for_loss_state')
     @controller.enqueue('check_for_win_state')
     execute_actions
     @player.process_turn
