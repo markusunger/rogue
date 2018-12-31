@@ -12,7 +12,15 @@ end
 get '/' do  # general rendering of the UI
   @state = settings.engine.draw
   # binding.remote_pry
-  erb :game
+  if settings.engine.has_won
+    settings.engine.has_won = false
+    erb :win
+  elsif settings.engine.has_lost
+    settings.engine.has_lost = false
+    erb :loss
+  else
+    erb :game
+  end
 end
 
 get '/act/:position' do  # handle player movement/attack

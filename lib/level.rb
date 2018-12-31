@@ -15,15 +15,14 @@ require_relative 'combat'
 class Level
   include RoundActions
 
-  attr_reader :controller, :win_state
+  attr_reader :controller, :win_state, :loss_state
 
   def initialize(floor_number)
     @floor_number = floor_number
     @log = Log.new
     @controller = ActionController.new
-    no_of_enemies = (floor_number / 2)
-    no_of_enemies += 1 if no_of_enemies == 0
-    prepare_map(no_of_enemies)
+    @player = Player.new
+    prepare_map
   end
 
   def execute_actions
@@ -42,6 +41,12 @@ class Level
     @player.process_turn
   end
 
+  def next(floor_number)
+    @floor_number = floor_number
+    @player.refresh
+    prepare_map
+  end
+
   def draw
     {
       map: to_enum(:render_map),
@@ -56,9 +61,10 @@ class Level
 
   private
 
-  def prepare_map(no_of_enemies)
+  def prepare_map
     @map = Map.new(8,8)
-    @player = Player.new
+    no_of_enemies = (@floor_number / 2)
+    no_of_enemies += 1 if no_of_enemies == 0
     @enemies = []
     init_player_position
     add_enemies(no_of_enemies)

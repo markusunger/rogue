@@ -18,10 +18,7 @@ class Player < Unit
   def initialize
     super(symbol: '@', name: 'Player', style: 'player')
     @ap = 1 # basic AP for the player when not using skills
-    @energy = STARTING_ENERGY
-    @energy_per_turn = ENERGY_PER_TURN
-    @block = 0
-    @block_per_turn = 0
+    refresh
 
     @skills = [ShieldWall.new, SpearThrow.new]
     @active_skill = nil
@@ -30,6 +27,13 @@ class Player < Unit
   def process_turn
     @energy += @energy_per_turn
     @block += @block_per_turn
+  end
+
+  def refresh
+    @energy = STARTING_ENERGY
+    @energy_per_turn = ENERGY_PER_TURN
+    @block = 0
+    @block_per_turn = 0
   end
 
   def use_skill(target)

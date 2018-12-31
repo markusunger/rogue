@@ -6,9 +6,12 @@ require_relative 'level'
 # also forwards actions to queue from the view
 
 class GameEngine
+  attr_accessor :has_won, :has_lost
+
   def initialize
     @floor_number = 1
     @level = Level.new(@floor_number)
+    has_won, has_lost = [false, false]
   end
 
   def request(command, param = nil)
@@ -23,7 +26,15 @@ class GameEngine
     @level.process_turn
     if @level.win_state
       @floor_number += 1
+      if @floor_number == 11
+        @has_won = true
+        @floor_number = 1
+      end
+      @level.next(@floor_number)
+    elsif @level.loss_state
+      @floor_number = 1
       @level = Level.new(@floor_number)
+      @has_lost = true
     end
   end
 
