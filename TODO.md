@@ -1,11 +1,11 @@
 # Todos until 1.0
 
 ## UI
-- proper start and end screen (stats for win/loss)
+- ~~proper start and end screen (stats for win/loss)~~
 - fancier stats panel window with colors
 - more useful log messages
 - indicate enemy stats and tile properties through hover window
-- fix enemy target number not showing when standing on a 
+- ~~fix enemy target number not showing up when standing on an entity~~
 
 ## Enemies
 - advanced pathfinding logic to move enemies into better positions
@@ -18,15 +18,17 @@
 - ~~determine display order for multiple entities on a tile~~
 
 ## Skills
+- ~~implement effect system to handle a variety of possible skill effects~~
 - come up with lots of skills and implement their unique properties if necessary
 - ~~dynamically require all skill files in `skills/` directory~~
 - skill selection before the game starts (pick 5 out of how many I can come up with)
 - alternatively: pick 5 random skills for the game
-- improved handling for self targetting skills (no target selection necessary)
+- ~~improved handling for self targetting skills (no target selection necessary)~~
 
 ## Game Logic
 - ~~make player health points persistent across floors~~
 - fix skills being able to hit enemies that are not in range
+- fix movement not canceling skill target selection correctly
 
 
 # Things that would be nice to add eventually

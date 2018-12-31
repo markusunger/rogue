@@ -38,14 +38,14 @@ class Player < Unit
     @block_per_turn = 0
   end
 
-  def use_skill(target)
+  def use_skill_on_self
     skill = @active_skill
     return 'No skill selected!' unless skill
     if skill.cost > @energy
       "Not enough energy to use #{skill.name}."
     else
       @energy -= skill.cost
-      skill.effect(target)
+      skill.effect(self)
     end
   end
 

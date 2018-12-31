@@ -1,0 +1,13 @@
+<div id="game-stat-window">
+  <% if @state[:win_state] == true %>
+    <h1>You have won!</h1>
+    <p>You have reached floor <%= @state[:floor_number] %>. Congratulations for beating The
+    game.</p>
+    <a href="/">Click to here to play again</a>
+  <% else %>
+    <h1>You have lost! :(</h1>
+    <p>You have reached floor <%= @state[:floor_number] %>. The last thing you remember
+    before you died: <em><%= @state[:log].last %></em></p>
+    <a href="/">Click to here to play again</a>
+  <% end %>
+</div>

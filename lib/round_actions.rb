@@ -94,7 +94,7 @@ module RoundActions
           return 'No valid enemy selected.' unless enemy
           result = Combat::skill(skill, @player, enemy, @map, @enemies)
           msg = result[:msg]
-        when :self  then msg = @player.use_skill(@player)
+        when :self  then msg = @player.use_skill_on_self
       end
       @player.active_skill = nil
       process_turn
@@ -104,6 +104,11 @@ module RoundActions
       skill = @player.skills[skill_index]
       return "Not enough energy to use #{skill.name}." if skill.cost > @player.energy
       @player.active_skill = skill
+      if skill.target == :self
+        msg = @player.use_skill_on_self
+        @player.active_skill = nil
+        return msg
+      end
       target_tiles = @map.active_tiles_in_range(@player.position, skill.range)
       target_tiles.each do |target|
         @map.add_entity(target, :marker)

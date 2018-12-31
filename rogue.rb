@@ -10,15 +10,18 @@ configure do
 end
 
 get '/' do  # general rendering of the UI
-  @state = settings.engine.draw
+  
   # binding.remote_pry
   if settings.engine.has_won
+    @state = settings.engine.last_round
     settings.engine.has_won = false
-    erb :win
+    erb :stats
   elsif settings.engine.has_lost
+    @state = settings.engine.last_round
     settings.engine.has_lost = false
-    erb :loss
+    erb :stats
   else
+    @state = settings.engine.draw
     erb :game
   end
 end

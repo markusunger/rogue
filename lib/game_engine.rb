@@ -7,6 +7,7 @@ require_relative 'level'
 
 class GameEngine
   attr_accessor :has_won, :has_lost
+  attr_reader :last_round
 
   def initialize
     @floor_number = 1
@@ -29,10 +30,13 @@ class GameEngine
       if @floor_number == 11
         @has_won = true
         @floor_number = 1
+        @last_round = @level.draw
+        @level = Level.new(@floor_number)
       end
       @level.next(@floor_number)
     elsif @level.loss_state
       @floor_number = 1
+      @last_round = @level.draw
       @level = Level.new(@floor_number)
       @has_lost = true
     end

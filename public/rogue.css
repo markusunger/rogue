@@ -9,6 +9,15 @@ h1 {
   color: #AA9881;
 }
 
+a {
+  color: #AA9881;
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 span.key {
   color: rgb(241, 216, 146);
   background-color: #364751;
@@ -196,6 +205,11 @@ div#log-window {
   overflow: auto;
   display: flex;
   flex-direction:column-reverse;
+}
+
+div#game-stat-window {
+  font-size: 12px;
+  line-height: 18px;
 }
 
 div#stats-window {

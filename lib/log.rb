@@ -21,4 +21,8 @@ class Log
   def size
     @entries.size
   end
+
+  def last
+    @entries.last
+  end
 end

@@ -55,7 +55,8 @@ class Level
       log: @log,
       player: @player,
       enemies: @enemies,
-      floor_number: @floor_number
+      floor_number: @floor_number,
+      win_state: @win_state
     }
   end
 
