@@ -1,8 +1,9 @@
 require_relative 'unit'
+require_relative 'skills/skill'
 
-# Dir.glob('skills/*') { |s| p s }
-require_relative 'skills/shield_wall'
-require_relative 'skills/spear_throw'
+Dir[File.dirname(__FILE__) + '/skills/*.rb'].each do |s|
+  require_relative 'skills/' + File.basename(s, '.rb')
+end
 
 # class Player
 # ------------
