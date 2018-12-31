@@ -1,11 +1,9 @@
 window.onload = () => {
-  player_td = document.querySelector("[data-player='true']")
-  let [x, y] = player_td.dataset.pos.split(',')
-  x = parseInt(x)
-  y = parseInt(y)
-  // player_td.classList.add('light_normal_0')
-
-
+  player_td = document.querySelector("[data-player='true']");
+  let [x, y] = player_td.dataset.pos.split(',');
+  x = parseInt(x);
+  y = parseInt(y);
+  // player_td.classList.add('light_normal_0');
 
   window.addEventListener("keyup", event => {
   let new_pos = '0,0';

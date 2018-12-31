@@ -51,12 +51,12 @@ hr {
   padding: 0;
 }
 
-table {
+table.map {
   border: 3px solid black;
   border-spacing: 0;
 }
 
-td {
+td.map {
   text-align: center;
   vertical-align: center;
   width: 40px;
@@ -64,6 +64,27 @@ td {
   border: 2px dashed #0d161b;
   padding: 0;
   margin: 0;
+}
+
+td.map:hover {
+  background-color: #364751;
+  cursor: pointer
+}
+
+table.stats {
+  padding: 0.1rem;
+}
+
+table.stats td {
+  padding: 0 0.2rem 0 0.2rem;
+}
+
+table.stats td.label {
+  color: #6a8494;
+}
+
+table.stats td.value {
+  
 }
 
 td.wall1 {
@@ -141,9 +162,16 @@ td.light_normal_2 {
   background-color: rgba(30, 44, 53, 0.1);
 }
 
-td:hover {
-  background-color: #364751;
-  cursor: pointer
+#health-container {
+  width: 200px;
+  height: 8px;
+  border: 0.1rem solid black;
+  background-color: rgb(78, 73, 80)
+}
+
+#health-bar {
+  height: 8px;
+  background-color: #376b51;
 }
 
 .panel {

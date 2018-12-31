@@ -1,13 +1,13 @@
 <% map = @state[:map] %>
 <% player = @state[:player] %>
 <div id="map-window" class="panel">
-  <table>
+  <table class="map">
     <% @state[:width].times do |y| %>
       <tr>
       <% @state[:height].times do |x| %>
         <% tile, coords = map.next %>
         <td 
-          class="<%= tile[:style] %> <%= tile[:bgstyle] %>"
+          class="map <%= tile[:style] %> <%= tile[:bgstyle] %>"
           data-pos="<%= coords.join(',') %>"
           data-player="<%= coords == player.position %>">
             <div class="tile-container">
@@ -28,9 +28,22 @@
 
 <div id="info-window">
   <div id="stats-window" class="panel">
-    Health: <%= player.hp %><br>
-    Energy: <%= player.energy %> (+<%= player.energy_per_turn %>/turn)<br>
-    Block: <%= player.block %> (+<%= player.block_per_turn %>/turn)
+    <table class="stats">
+      <tr>
+        <td class="label">Health:</td>
+        <td>
+          <div id="health-container">
+            <div id="health-bar" style="width: <%= player.hp * 20 %>px"></div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="label">Energy:</td><td class="value"><%= player.energy %> (+<%= player.energy_per_turn %>/turn)</td>
+      </tr>
+      <tr>
+        <td class="label">Block:</td><td class="value"><%= player.block %> (+<%= player.block_per_turn %>/turn)</td>
+      </tr>
+    </table>
   </div>
 
   <div id="skill-window" class="panel">
