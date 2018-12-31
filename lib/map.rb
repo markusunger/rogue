@@ -128,7 +128,10 @@ class Map
     # and its entities
     tile = @map[[x,y]]
     if tile.entities.size > 0
-      e = tile.entities.first # TODO: order for multiple entities
+      # sort entities by priority to determine which is displayed (e.g. markers first)
+      e = tile.entities 
+        .sort { |a, b| @entities[b][:priority] <=> @entities[a][:priority] } 
+        .first 
       {
         symbol: @entities[e][:symbol] || tile.symbol,
         style: @entities[e][:style] || tile.style,

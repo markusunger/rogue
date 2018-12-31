@@ -4,11 +4,13 @@ module Entities
       remains: {
         symbol: '░',
         style: 'remains',
+        priority: 1,
         bgstyle: 'bgremains'
       },
       marker: {
         symbol: nil,
         style: nil,
+        priority: 99,
         bgstyle: 'bgmarker'
       }
     }

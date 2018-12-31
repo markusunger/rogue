@@ -15,7 +15,7 @@
 
 ## Map
 - better exit placement (really in corners)
-- determine display order for multiple entities on a tile
+- ~~determine display order for multiple entities on a tile~~
 
 ## Skills
 - come up with lots of skills and implement their unique properties if necessary
@@ -26,6 +26,7 @@
 
 ## Game Logic
 - ~~make player health points persistent across floors~~
+- fix skills being able to hit enemies that are not in range
 
 
 # Things that would be nice to add eventually
