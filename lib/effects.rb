@@ -23,6 +23,7 @@ class Effect
   end
 end
 
+# Stun Effect
 class Stun < Effect
   def initialize
     super(
@@ -34,6 +35,21 @@ class Stun < Effect
 
   def effect(unit)
     nil
+  end
+end
+
+# Poison Effect
+class Poison < Effect
+  def initialize
+    super(
+      name: 'Poison',
+      rounds_remaining: 3,
+      description: 'Unit takes damage over time.'
+    )
+  end
+
+  def effect(unit)
+    unit.take_dmg(1)
   end
 end
 

@@ -1,11 +1,28 @@
 # All _A Dungeon Forgotten_ skills
 
+* **Aimed Arrow**
+  * cost: 5
+  * range: 4
+  * targets enemy
+  * effect: 9 damage on target
+
+* **Defensive Stance**
+  * cost: 2
+  * range: 0
+  * targets self
+  * effect: provides 5 block
 
 * **Pierce**
   * cost: 2
   * range: 1
   * targets enemy
   * effect: 2 damage on target
+
+* **Fortify**
+  * cost: 3
+  * range: 0
+  * targets self
+  * effect: provides 8 block
 
 * **Shield Bash**
   * cost: 2

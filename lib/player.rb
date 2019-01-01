@@ -21,7 +21,7 @@ class Player < Unit
     @ap = 1 # basic AP for the player when not using skills
     refresh
 
-    @skills = [ShieldWall.new, SpearThrow.new, ShieldBash.new, Pierce.new]
+    @skills = [ShieldWall.new, AimedArrow.new, ShieldBash.new, Pierce.new, Fortify.new]
     @active_skill = nil
   end
 
