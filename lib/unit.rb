@@ -6,14 +6,17 @@
 
 class Unit
   attr_accessor :position
-  attr_reader :symbol, :name, :style, :hp, :ap
+  attr_reader :symbol, :name, :style, :hp, :ap, :max_hp
 
-  def initialize(symbol: ' ', name: 'generic unit', style: '', hp: 10, ap: 1)
+  MAX_HP = 10
+
+  def initialize(symbol: ' ', name: 'generic unit', style: '', hp: MAX_HP, ap: 1)
     @symbol = symbol
     @name = name
     @style = style
     @position = [0,0]
     @hp = hp
+    @max_hp = MAX_HP
     @ap = ap
     @effects = []
   end

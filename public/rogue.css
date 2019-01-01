@@ -163,15 +163,30 @@ td.light_normal_2 {
 }
 
 #health-container {
+  display: inline-block;
   width: 200px;
-  height: 8px;
+  height: 14px;
   border: 0.1rem solid black;
-  background-color: rgb(78, 73, 80)
+  background-color: rgb(78, 73, 80);
+  position: relative;
 }
 
 #health-bar {
-  height: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 14px;
   background-color: #376b51;
+  padding: 0;
+  z-index: 3;
+}
+
+#health-numbers {
+  position: absolute;
+  top: -6px;
+  left: 40%;
+  font-size: 10px;
+  z-index: 99;
 }
 
 .panel {

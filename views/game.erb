@@ -34,6 +34,7 @@
         <td>
           <div id="health-container">
             <div id="health-bar" style="width: <%= player.hp * 20 %>px"></div>
+            <div id="health-numbers"><%= "#{player.hp}/#{player.max_hp}" %></div>
           </div>
         </td>
       </tr>

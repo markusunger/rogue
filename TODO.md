@@ -2,7 +2,7 @@
 
 ## UI
 - ~~proper start and end screen (stats for win/loss)~~
-- fancier stats panel window with colors
+- ~~fancier stats panel window with colors~~
 - more useful log messages
 - indicate enemy stats and tile properties through hover window
 - ~~fix enemy target number not showing up when standing on an entity~~
