@@ -106,6 +106,14 @@ class Map
       .map { |k, v| k }
   end
 
+  def in_range?(range, position, other_position)
+    paths = Pathfinder.new(self)
+    paths
+      .distances_from(position)
+      .select { |k, v| k == other_position && v <= range }
+      .size > 0 
+  end
+
   def add_entity(position, name)
     @map[position].entities << name
   end

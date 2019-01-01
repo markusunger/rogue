@@ -214,7 +214,7 @@ td.light_normal_2 {
   height: 600px;
 }
 
-#info-window {
+#info-container {
   width: 480px;
   height: 600px;
   line-height: 115%;
@@ -223,18 +223,32 @@ td.light_normal_2 {
   justify-content: space-between;
 }
 
+#map-container {
+  height: 600px;
+  line-height: 115%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
+
 div#map-window {
   font-family: 'Source code Pro', monospace;
   font-weight: 700;
   font-size: 30px;
-  height: 534px;
-  flex-grow: 1;
 }
 
 #map-window p {
   color: #505656;
   font-family: 'Press Start 2P', monospace;
   font-size: 16px;
+}
+
+div #map-info-window {
+  margin: 15px 0;
+  font-size: 12px;
+  padding: 1.4rem;
+  height: 9rem;
 }
 
 div#log-window {

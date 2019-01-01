@@ -1,35 +1,40 @@
 <% map = @state[:map] %>
 <% player = @state[:player] %>
-<div id="map-window" class="panel">
-  <table class="map">
-    <% @state[:width].times do |y| %>
-      <tr>
-      <% @state[:height].times do |x| %>
-        <% tile, coords, info = map.next %>
-        <td 
-          class="map <%= tile[:style] %> <%= tile[:bgstyle] %>"
-          data-pos="<%= coords.join(',') %>"
-          data-player="<%= coords == player.position %>">
-            <div class="tile-container tooltip">
-              <div class="tooltip tooltiptext">
-                <%= info.join(', ') %>
-              </div>
-              <%= tile[:symbol] %>
-              <% @state[:enemies].map { |e| e.position }.each_with_index do |enemy_position, i| %>
-                <% if enemy_position == coords && tile[:bgstyle] == 'bgmarker' %>
-                  <div class="enemy-index"><%= i + 1 %></div>
+<div id="map-container">
+  <div id="map-window" class="panel">
+    <table class="map">
+      <% @state[:width].times do |y| %>
+        <tr>
+        <% @state[:height].times do |x| %>
+          <% tile, coords, info = map.next %>
+          <td 
+            class="map <%= tile[:style] %> <%= tile[:bgstyle] %>"
+            data-pos="<%= coords.join(',') %>"
+            data-player="<%= coords == player.position %>">
+              <div class="tile-container tooltip">
+                <div class="tooltip tooltiptext">
+                  <%= info.join(', ') %>
+                </div>
+                <%= tile[:symbol] %>
+                <% @state[:enemies].map { |e| e.position }.each_with_index do |enemy_position, i| %>
+                  <% if enemy_position == coords && tile[:bgstyle] == 'bgmarker' %>
+                    <div class="enemy-index"><%= i + 1 %></div>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </div>
-        </td>
+              </div>
+          </td>
+        <% end %>
+        </tr>
       <% end %>
-      </tr>
-    <% end %>
-  </table>
-  <p><strong>Floor <%= @state[:floor_number] %></strong></p>
+    </table>
+  </div>
+
+  <div id="map-info-window" class="panel">
+    <p><strong>Floor <%= @state[:floor_number] %></strong></p>
+  </div>
 </div>
 
-<div id="info-window">
+<div id="info-container">
   <div id="stats-window" class="panel">
     <table class="stats">
       <tr>

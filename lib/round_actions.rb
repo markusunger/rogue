@@ -95,36 +95,42 @@ module RoundActions
 
   def handle_skill(slot)
     if @player.active_skill
-      msg = nil
-      case @player.active_skill.target
-        when :enemy
-          skill = @player.active_skill
-          enemy = @enemies[slot.to_i - 1]
-          return 'No valid enemy selected.' unless enemy
-          result = Combat::skill(skill, @player, enemy, @map, @enemies)
-          msg = result[:msg]
-        when :self  then msg = @player.use_skill_on_self
-      end
-      @player.active_skill = nil
-      process_turn
-      msg
+      execute_skill(slot)
     else
       skill_index = slot.to_i - 1
       skill = @player.skills[skill_index]
       return "Not enough energy to use #{skill.name}." if skill.cost > @player.energy
       @player.active_skill = skill
-      if skill.target == :self
-        msg = @player.use_skill_on_self
-        @player.active_skill = nil
-        process_turn
-        return msg
-      end
+      return execute_skill(nil) if skill.target == :self
       target_tiles = @map.active_tiles_in_range(@player.position, skill.range)
       target_tiles.each do |target|
         @map.add_entity(target, :marker)
       end
       ''
     end
+  end
+
+  def execute_skill(slot)
+    msg = nil
+    skill = @player.active_skill
+    case skill.target
+      when :enemy
+        enemy = @enemies[slot.to_i - 1]
+        unless enemy
+          reset_active_skill
+          return 'No valid enemy selected.'
+        end
+        unless @map.in_range?(skill.range, @player.position, enemy.position)
+          reset_active_skill
+          return 'Not in range of that enemy.'
+        end
+        result = Combat::skill(skill, @player, enemy, @map, @enemies)
+        msg = result[:msg]
+      when :self  then msg = @player.use_skill_on_self
+    end
+    @player.active_skill = nil
+    process_turn
+    msg
   end
 
   def reset_active_skill
