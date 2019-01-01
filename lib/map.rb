@@ -135,13 +135,15 @@ class Map
       {
         symbol: @entities[e][:symbol] || tile.symbol,
         style: @entities[e][:style] || tile.style,
-        bgstyle: @entities[e][:bgstyle] || tile.bgstyle
+        bgstyle: @entities[e][:bgstyle] || tile.bgstyle,
+        name: e.to_s.capitalize || tile.name
       }
     else
     {
       symbol: tile.symbol,
       style: tile.style,
-      bgstyle: tile.bgstyle
+      bgstyle: tile.bgstyle,
+      name: tile.name
     }
     end
   end

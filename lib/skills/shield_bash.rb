@@ -14,5 +14,6 @@ class ShieldBash < Skill
 
   def effect(enemy)
     enemy.apply_effect(Stun.new)
+    "#{enemy.name} is now stunned."
   end
 end

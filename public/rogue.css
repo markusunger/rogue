@@ -163,9 +163,8 @@ td.light_normal_2 {
 }
 
 #health-container {
-  display: inline-block;
   width: 200px;
-  height: 14px;
+  height: 17px;
   border: 0.1rem solid black;
   background-color: rgb(78, 73, 80);
   position: relative;
@@ -175,7 +174,7 @@ td.light_normal_2 {
   position: absolute;
   top: 0;
   left: 0;
-  height: 14px;
+  height: 17px;
   background-color: #376b51;
   padding: 0;
   z-index: 3;
@@ -183,7 +182,7 @@ td.light_normal_2 {
 
 #health-numbers {
   position: absolute;
-  top: -6px;
+  top: -5px;
   left: 40%;
   font-size: 10px;
   z-index: 99;
@@ -214,7 +213,7 @@ td.light_normal_2 {
 }
 
 #info-window {
-  width: 440px;
+  width: 480px;
   height: 600px;
   line-height: 115%;
   display: flex;
@@ -266,4 +265,48 @@ div#skill-window {
   font-size: 12px;
   line-height: 18px;
   padding: 0.4rem;
+}
+
+div.tooltip {
+  position: relative;
+  text-decoration: none;
+}
+div.tooltip:after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 20%;
+  background: #374b5c;
+  color: #C7E8E9;
+  font-size: 10px;
+  padding: 5px 15px;
+  white-space: nowrap;
+  opacity: 0;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition : all 0.4s ease;
+  transition : all 0.4s ease;
+}
+div.tooltip:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 20px solid #ffcb66;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition : all 0.4s ease;
+  transition : all 0.4s ease;
+  opacity: 0;
+  left: 30%;
+  bottom: 90%;
+}
+div.tooltip:hover:after {
+  bottom: 100%;
+}
+div.tooltip:hover:before {
+  bottom: 70%;
+}
+div.tooltip:hover:after, a:hover:before {
+  opacity: 1;
 }

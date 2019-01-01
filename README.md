@@ -1,4 +1,6 @@
-# An unnamed Roguelike
+# A Dungeon Forgotten
+
+_A Dungeon Forgotten_ is a [rogue-like](https://en.wikipedia.org/wiki/Roguelike)-inspired game with a Ruby + Sinatra backend and some light HTML/CSS/JS frontend. The project's scope was mainly influenced by the amount of time I could dedicate to it. Since this is just a christmas side project, don't expect mind-bending architecture choices or lots of features.
 
 ### Installation 
 
@@ -22,3 +24,7 @@ In order to attack enemies, you have two possibilities:
 
 You have five skill slots, identified by the keys `1` to `5`. To use a skill, press the corresponding key as indicated in the UI. Depending on what the skill does, you have to select a valid target next. Skills that target specific enemies mark each enemy in range with a number. Press that number key to execute the skill effect.
 If the skill targets the player itself, it will execute immediately after pressing the skill key.
+
+### Development
+
+See `TODO.md` for a roadmap of planned features. `SKILLS.md` holds a short overview of all available skills in the game (hopefully up-to-date, I'm terrible at documentation). When in doubt, look at the skill description in-game.

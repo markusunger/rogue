@@ -13,6 +13,6 @@ class SpearThrow < Skill
 
   def effect(enemy)
     enemy.take_dmg(5)
-    "#{enemy.name} is pierced by a spear for 5 damage."
+    "#{enemy.name} takes a spear for 5 damage."
   end
 end

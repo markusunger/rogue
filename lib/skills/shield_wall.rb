@@ -13,6 +13,6 @@ class ShieldWall < Skill
 
   def effect(player)
     player.block_per_turn += 2
-    "You gain 2 block per turn!"
+    "You gain 2 block per turn."
   end
 end

@@ -13,6 +13,6 @@ class Pierce < Skill
 
   def effect(enemy)
     enemy.take_dmg(2)
-    "#{enemy.name} takes 2 damage."
+    "#{enemy.name} gets pierced for 2 damage."
   end
 end

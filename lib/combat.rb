@@ -16,7 +16,7 @@ class Combat
     msg = skill.effect(defender)
     handle_dead_enemy(defender, enemies, map) if defender.dead?
 
-    {msg: "Player has used skill.", kill: defender.dead?}
+    {msg: msg, kill: defender.dead?}
   end
 
   def self.handle_dead_enemy(defender, enemies, map)

@@ -3,6 +3,9 @@
 # methods for actions that can occur on an individual level and
 # be triggered either by the action controller or other level methods
 
+# this is quite a heavy file, but it kinda makes sense to have everything
+# in one place, so I'm not going to split it up :P
+
 module RoundActions
   def render_map(&block)
     # determines what entity, unit or tile to actually output in the frontend,
@@ -10,14 +13,20 @@ module RoundActions
     enum = @map.draw
     enum.each do |tile, position|
       to_draw = nil
+      info = []
       possible_unit = @enemies.find { |a| a.position == position }
+      if possible_unit
+        info << "Enemy: #{possible_unit.name} (#{possible_unit.hp}/#{possible_unit.max_hp})" 
+      end 
       possible_unit = @player if position == @player.position
+      info << "You are here!" if position == @player.position 
+      info << "Tile: #{tile[:name].capitalize}"
 
       to_draw = [{
         symbol: possible_unit&.symbol || tile[:symbol],
         style: possible_unit&.style || tile[:style],
         bgstyle: tile[:bgstyle]
-      }, position]
+      }, position, info]
 
       yield(to_draw) if block_given?
     end
@@ -107,6 +116,7 @@ module RoundActions
       if skill.target == :self
         msg = @player.use_skill_on_self
         @player.active_skill = nil
+        process_turn
         return msg
       end
       target_tiles = @map.active_tiles_in_range(@player.position, skill.range)
