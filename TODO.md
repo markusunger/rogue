@@ -22,8 +22,7 @@
 - ~~implement effect system to handle a variety of possible skill effects~~
 - come up with lots of skills and implement their unique properties if necessary
 - ~~dynamically require all skill files in `skills/` directory~~
-- skill selection before the game starts (pick 5 out of how many I can come up with)
-- alternatively: pick 5 random skills for the game
+- ~~have 2 starting skills, pick up new skills from dead enemies~~
 - ~~improved handling for self targetting skills (no target selection necessary)~~
 
 ## Game Logic
@@ -36,7 +35,7 @@
 - a health bar for enemies
 - player inventory for usable items
 - floors with a trader for item/skill purchases
-- eventually have skills be lootable from enemies and buyable from a trader
+- eventually have skills ~~be lootable from enemies and~~ buyable from a trader
 - bosses after every 10th floor
 - smooth difficulty scaling up to infinite floors
 - a cool title screen

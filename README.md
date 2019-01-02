@@ -22,8 +22,10 @@ In order to attack enemies, you have two possibilities:
 - use one of your skills
 
 
-You have five skill slots, identified by the keys `1` to `5`. To use a skill, press the corresponding key as indicated in the UI. Depending on what the skill does, you have to select a valid target next. Skills that target specific enemies mark each enemy in range with a number. Press that number key to execute the skill effect. To cancel the target selection, press `Escape`.
+You have up to five skill slots, identified by the keys `1` to `5`. To use a skill, press the corresponding key as indicated in the UI. Depending on what the skill does, you have to select a valid target next. Skills that target specific enemies mark each enemy in range with a number. Press that number key to execute the skill effect. To cancel the target selection, press `Escape`.
 If the skill targets the player itself, it will execute immediately after pressing the skill key.
+
+You start the game with two weak skills. Dead enemies leave loot behind. Pick it up by walking over it to find new skills. You can equip different skills by pressing `l` and selecting/deselecting from the list of skills you have found so far.
 
 ### Development
 
