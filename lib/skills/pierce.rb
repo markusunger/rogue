@@ -8,7 +8,7 @@ class Pierce < Skill
       range: 1,
       target: :enemy,
       floors: (1..10),
-      description: 'deal 2 damage in melee range'
+      description: 'deal 2 damage'
     )
   end
 

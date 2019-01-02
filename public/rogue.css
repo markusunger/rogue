@@ -46,6 +46,10 @@ span.equipped {
   color: #d49a43;
 }
 
+span.description {
+  color: #62859b;
+}
+
 div.tile-container {
   position: relative;
   width: 100%;
@@ -53,10 +57,19 @@ div.tile-container {
 }
 
 div.enemy-index {
+  font-family: 'Courier', 'Courier New', Courier, monospace;
   font-size: 10px;
   position: absolute;
   top: 0;
   right: 0;
+}
+
+div.title-big {
+  text-align: center;
+  color: #612121;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 32px;
 }
 
 button {
@@ -96,6 +109,7 @@ td.map:hover {
 
 table.stats {
   padding: 0.1rem;
+  line-height: 200%;
 }
 
 table.stats td {
@@ -236,7 +250,7 @@ td.light_normal_2 {
 
 #health-numbers {
   position: absolute;
-  top: -5px;
+  top: -3px;
   left: 40%;
   font-size: 10px;
   z-index: 99;
@@ -244,7 +258,7 @@ td.light_normal_2 {
 
 .panel {
   background-color: #10191e;
-  padding: 1rem;
+  padding: 0.3rem 0.3rem;
   border: 0.1rem solid black;
 }
 
@@ -264,6 +278,15 @@ td.light_normal_2 {
   align-items: flex-start;
   padding: 15px;
   height: 600px;
+}
+
+#title-window {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  width: 500px;
 }
 
 #info-container {
@@ -342,6 +365,14 @@ div#skill-window {
   margin: 0 15px 15px 15px;
   font-size: 12px;
   line-height: 18px;
+  padding: 0.4rem;
+}
+
+div#title-screen {
+  width: 480px;
+  margin: 15px 0;
+  font-size: 10px;
+  line-height: 15px;
   padding: 0.4rem;
 }
 

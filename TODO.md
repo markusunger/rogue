@@ -1,35 +1,7 @@
-# Todos until 1.0
-
-## UI
-- ~~proper start and end screen (stats for win/loss)~~
-- ~~fancier stats panel window with colors~~
-- ~~more useful log messages~~
-- ~~indicate enemy stats and tile properties through hover window~~
-- ~~fix enemy target number not showing up when standing on an entity~~
-
-## Enemies
-- ~~advanced pathfinding logic to move enemies into better positions~~
-- ~~different enemy types with varying stats~~
-- ~~improved enemy spawn placement~~
-- enemy ranged combat to prevent player dodging?
-
-## Map
-- ~~better exit placement (really in corners)~~
-- ~~determine display order for multiple entities on a tile~~
-- ~~don't cover exit tiles with entities other than markers~~
-
-## Skills
-- ~~implement effect system to handle a variety of possible skill effects~~
-- come up with lots of skills and implement their unique properties if necessary
-- ~~dynamically require all skill files in `skills/` directory~~
-- ~~have 2 starting skills, pick up new skills from dead enemies~~
-- ~~improved handling for self targetting skills (no target selection necessary)~~
-
-## Game Logic
-- ~~make player health points persistent across floors~~
-- ~~fix skills being able to hit enemies that are not in range~~
-- ~~fix movement not canceling skill target selection correctly~~
-
+# Things I hadn't enough time to fix/implement/care about
+- enemies can easily be held at bay by dodging indefinitely
+- there are still not enough skills and skill variety
+- there's no to very little balance to the game
 
 # Things that would be nice to add eventually
 - a health bar for enemies

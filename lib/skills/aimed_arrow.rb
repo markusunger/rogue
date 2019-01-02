@@ -7,8 +7,8 @@ class AimedArrow < Skill
       cost: 5,
       range: 4,
       target: :enemy,
-      floors: (3..10),
-      description: '9 damage up to a range of 5'
+      floors: (7..10),
+      description: '9 damage up to a range of 4'
     )
   end
 

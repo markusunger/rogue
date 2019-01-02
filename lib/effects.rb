@@ -58,4 +58,3 @@ class Poison < Effect
     unit.take_dmg(@dmg)
   end
 end
-

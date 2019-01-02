@@ -8,12 +8,12 @@ class DefensiveStance < Skill
       range: 0,
       target: :self,
       floors: (1..10),
-      description: 'provides 5 block'
+      description: 'provides 3 block'
     )
   end
 
   def effect(player)
-    player.block += 5
-    "You gain 5 block."
+    player.block += 3
+    "You gain 3 block."
   end
 end

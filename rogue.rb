@@ -12,7 +12,10 @@ end
 get '/' do  # general rendering of the UI
   
   # binding.remote_pry
-  if settings.engine.has_won
+  if !settings.engine.has_started
+    settings.engine.has_started = true
+    erb :title, layout: :layout_title
+  elsif settings.engine.has_won
     @state = settings.engine.last_round
     settings.engine.has_won = false
     erb :stats

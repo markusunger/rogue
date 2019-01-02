@@ -29,4 +29,4 @@ You start the game with two weak skills. Dead enemies leave loot behind. Pick it
 
 ### Development
 
-See `TODO.md` for a roadmap of planned features. `SKILLS.md` holds a short overview of all available skills in the game (hopefully up-to-date, I'm terrible at documentation). When in doubt, look at the skill description in-game.
+See `TODO.md` for an insight what didn't make the current release (hint: a lot) and what could be implemented to flesh the game out.

@@ -67,7 +67,7 @@
           <td>
             <%= skill.name %>
             (<span class="<%= player.energy >= skill.cost ? "energy-cost-yes" : "energy-cost-no" %>"><%= skill.cost %></span>)<br>
-            <%= skill.description %>
+            <span class="description"><%= skill.description %></span>
           </td>
         </tr>
       <% end %>

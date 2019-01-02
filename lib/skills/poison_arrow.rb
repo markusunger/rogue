@@ -1,4 +1,5 @@
 require_relative 'skill'
+require_relative '../effects'
 
 class PoisonArrow < Skill
   def initialize

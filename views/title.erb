@@ -1,0 +1,33 @@
+<div class="panel title-big">
+A DUNGEON FORGOTTEN
+</div>
+
+<div id="title-screen" class="panel">
+  <div>
+    <h2>Overview</h2>
+    <p>You control the @ symbol. On each floor, enemies (varying red symbols) wait and must be defeated. To climb down to another floor, defeat all enemies and move to the exit stairs (¬). After you successfully passed floor 10, you win the game. If you die, you have to start over.</p>
+    <h2>Instructions</h2>
+    <p>Use the <span class="key">WASD</span> keys to move in straight lines and <span class="key">QEYC</span> to move diagonally.</p>
+    <p>In order to attack enemies, you have two possibilities:</p>
+    <ul>
+      <li>move directly into them for a weak basic attack</li>
+      <li>use one of your skills</li>
+    </ul>
+    <p>You have up to five skill slots, identified by the keys <span class="key">1</span> to <span class="key">5</span>. To use a skill, press the corresponding key as indicated in the UI. Depending on what the skill does, you have to select a valid target next. Skills that target specific enemies mark each enemy in range with a number. Press that number key to execute the skill effect. To cancel the target selection, press <span class="key">Esc</span>.<br>
+    If the skill targets the player itself, it will execute immediately after pressing the skill key.</p>
+    <p>You start the game with two weak skills. Dead enemies leave loot behind. Pick it up by walking over it to find new skills. You can equip different skills by pressing <span class="key">L</span> and selecting/deselecting from the list of skills you have found so far.</p>
+  </div>
+  <div id="footer-button">
+    <button type="button" id="start-game">Start the game</button>
+  </div>
+</div>
+
+
+<script>
+  window.onload = () => {
+    let button = document.getElementById('start-game');
+    button.addEventListener("click", () => {
+      window.location.href = '/';
+    })
+  }
+</script>

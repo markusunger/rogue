@@ -6,13 +6,13 @@ require_relative 'level'
 # also forwards actions to queue from the view
 
 class GameEngine
-  attr_accessor :has_won, :has_lost
+  attr_accessor :has_won, :has_lost, :has_started
   attr_reader :last_round
 
   def initialize
     @floor_number = 1
     @level = Level.new(@floor_number)
-    has_won, has_lost = [false, false]
+    has_won, has_lost, has_started = [false, false, false]
   end
 
   def request(command, param = nil)

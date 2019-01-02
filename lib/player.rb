@@ -14,7 +14,11 @@ class Player < Unit
 
   STARTING_ENERGY = 5 # energy points at the start of each level
   ENERGY_PER_TURN = 1 # energy points to gain at the start of each round
-  ALL_SKILLS = [AimedArrow, DefensiveStance, DisciplinedStrike, Fortify, PoisonArrow, Pierce, ShieldBash, ShieldWall, SpearThrow]
+  ALL_SKILLS = [
+    AimedArrow, DefensiveStance, DisciplinedStrike, Fortify, LuckyPunch, 
+    PoisonArrow, Pierce, ShieldBash, ShieldWall, SpearThrow, Rejuvenation,
+    TastySnack, AxeThrow
+  ]
 
   def initialize
     super(symbol: '@', name: 'Player', style: 'player')
@@ -56,6 +60,11 @@ class Player < Unit
       @hp += @block
       @block = 0
     end
+  end
+
+  def heal(amount)
+    @hp += amount
+    @hp = MAX_HP if @hp > MAX_HP
   end
 
   def add_random_skill(floor)

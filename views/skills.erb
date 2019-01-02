@@ -1,6 +1,5 @@
 <% skills = @state[:player].skills %>
 <% skillset = @state[:player].skillset %>
-<% p skillset %>
 
 <div id="skill-container">
   <div id="skill-explanation" class="panel">
@@ -23,7 +22,7 @@
           <td>
             <%= skill.name %>
             (<%= skill.cost %>)<br>
-            <%= skill.description %>
+            <span class="description"><%= skill.description %></span>
         </tr>
       <% end %>
     </table>
