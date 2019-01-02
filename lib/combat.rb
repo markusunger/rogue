@@ -13,7 +13,11 @@ class Combat
 
   def self.skill(skill, attacker, defender, map, enemies)
     attacker.energy -= skill.cost
-    msg = skill.effect(defender)
+    if skill.target == :enemy
+      msg = skill.effect(defender)
+    elsif skill.target == :both
+      msg = skill.effect(defender, attacker)
+    end
     handle_dead_enemy(defender, enemies, map) if defender.dead?
 
     {msg: msg, kill: defender.dead?}

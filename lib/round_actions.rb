@@ -94,7 +94,7 @@ module RoundActions
     return message unless enemy # check if enemy died during the round
     decision = @map.adjacent?(enemy.position, @player.position) ? :attack : :move
     if enemy.is_stunned?
-      enemy.process_turn
+      enemy.process_turn(@enemies, @map, @log)
       return message
     end
 
@@ -107,7 +107,7 @@ module RoundActions
       @loss_state = false if result[:kill]
       message << result[:msg]
     end
-    enemy.process_turn
+    enemy.process_turn(@enemies, @map, @log)
     message
   end
 
@@ -131,21 +131,20 @@ module RoundActions
   def execute_skill(slot)
     msg = nil
     skill = @player.active_skill
-    case skill.target
-      when :enemy
-        enemy = @enemies[slot.to_i - 1]
-        unless enemy
-          reset_active_skill
-          return 'No valid enemy selected.'
-        end
-        unless @map.in_range?(skill.range, @player.position, enemy.position)
-          reset_active_skill
-          return 'Not in range of that enemy.'
-        end
-        result = Combat::skill(skill, @player, enemy, @map, @enemies)
-        msg = result[:msg]
-      when :self  then msg = @player.use_skill_on_self
+    if skill.target == :enemy || skill.target == :both
+      enemy = @enemies[slot.to_i - 1]
+      unless enemy
+        reset_active_skill
+        return 'No valid enemy selected.'
+      end
+      unless @map.in_range?(skill.range, @player.position, enemy.position)
+        reset_active_skill
+        return 'Not in range of that enemy.'
+      end
+      result = Combat::skill(skill, @player, enemy, @map, @enemies)
+      msg = result[:msg]
     end
+    msg = @player.use_skill_on_self if skill.target == :self
     @player.active_skill = nil
     process_turn
     msg

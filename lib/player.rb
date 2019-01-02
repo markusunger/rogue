@@ -14,7 +14,7 @@ class Player < Unit
 
   STARTING_ENERGY = 5 # energy points at the start of each level
   ENERGY_PER_TURN = 1 # energy points to gain at the start of each round
-  ALL_SKILLS = [AimedArrow, DefensiveStance, Fortify, Pierce, ShieldBash, ShieldWall, SpearThrow]
+  ALL_SKILLS = [AimedArrow, DefensiveStance, DisciplinedStrike, Fortify, PoisonArrow, Pierce, ShieldBash, ShieldWall, SpearThrow]
 
   def initialize
     super(symbol: '@', name: 'Player', style: 'player')
@@ -27,7 +27,7 @@ class Player < Unit
   end
 
   def process_turn
-    super
+    super(nil, nil, nil)
     @energy += @energy_per_turn
     @block += @block_per_turn
   end

@@ -25,11 +25,12 @@ class Unit
     self.position = new_position if map.walkable?(new_position)
   end
 
-  def process_turn
+  def process_turn(enemies, map, log)
     @effects.each do |effect|
-      effect.process_turn(self)
+      effect.process_turn(self, enemies, map)
       if effect.rounds_remaining == 0
         @effects.delete(effect)
+        log << "#{self.name} is no longer #{effect.adjective}."
       end
     end
   end
