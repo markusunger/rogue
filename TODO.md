@@ -8,14 +8,15 @@
 - ~~fix enemy target number not showing up when standing on an entity~~
 
 ## Enemies
-- advanced pathfinding logic to move enemies into better positions
-- different enemy types with varying stats
-- improved enemy spawn placement
+- ~~advanced pathfinding logic to move enemies into better positions~~
+- ~~different enemy types with varying stats~~
+- ~~improved enemy spawn placement~~
 - enemy ranged combat to prevent player dodging?
 
 ## Map
-- better exit placement (really in corners)
+- ~~better exit placement (really in corners)~~
 - ~~determine display order for multiple entities on a tile~~
+- ~~don't cover exit tiles with entities other than markers~~
 
 ## Skills
 - ~~implement effect system to handle a variety of possible skill effects~~
@@ -27,11 +28,12 @@
 
 ## Game Logic
 - ~~make player health points persistent across floors~~
-- fix skills being able to hit enemies that are not in range
-- fix movement not canceling skill target selection correctly
+- ~~fix skills being able to hit enemies that are not in range~~
+- ~~fix movement not canceling skill target selection correctly~~
 
 
 # Things that would be nice to add eventually
+- a health bar for enemies
 - player inventory for usable items
 - floors with a trader for item/skill purchases
 - eventually have skills be lootable from enemies and buyable from a trader

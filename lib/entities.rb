@@ -1,17 +1,23 @@
 module Entities
   def self.table
     {
+      invisible: {
+        symbol: '',
+        style: '',
+        bgstyle: '',
+        priority: 0
+      },
       remains: {
         symbol: '░',
         style: 'remains',
-        priority: 1,
-        bgstyle: 'bgremains'
+        bgstyle: 'bgremains',
+        priority: 1
       },
       marker: {
         symbol: nil,
         style: nil,
-        priority: 99,
-        bgstyle: 'bgmarker'
+        bgstyle: 'bgmarker',
+        priority: 99
       }
     }
   end

@@ -39,8 +39,12 @@ module RoundActions
   end
 
   def add_enemies(no)
-    no.times do 
-      new_enemy = Enemy.new
+    # Create a list of Enemy classes that are suited for this floor
+    enemies_for_floor = [Goblin, Orc, GiantSpider]
+    .select { |e| e.spawns_on_floor.cover?(@floor_number) }
+
+    no.times do
+      new_enemy = enemies_for_floor.sample.new
       spawn = nil
       loop do
         spawn = @map.find_enemy_spawn(@player.position)
@@ -62,9 +66,14 @@ module RoundActions
 
     if to_attack
       result = Combat::attack(@player, to_attack, @map, @enemies) 
-      result[:kill] ? (result[:msg] + ' It\'s a kill!') : result[:msg]
+      if result[:kill]
+        result[:msg] + " It's a kill!"
+      else
+        result[:msg]
+      end
     elsif @map.adjacent?(@player.position, new_position)
       @player.move(new_position, @map)
+      reset_active_skill
       ''
     else
       'Cannot move, destination blocked?'
@@ -82,8 +91,9 @@ module RoundActions
     end
 
     if decision == :move
-      pick = @map.closer_to_player(enemy.position, @player.position)
-      enemy.move(pick, @map) unless anyone_there?(pick)
+      choices = @map.closer_to_player(enemy.position, @player.position)
+      choice = choices.find { |c| !anyone_there?(c) }
+      enemy.move(choice, @map)
     elsif decision == :attack
       result = Combat::attack(enemy, @player, @map, @enemies)
       @loss_state = false if result[:kill]
@@ -143,7 +153,9 @@ module RoundActions
   end
 
   def check_for_win_state
-    @win_state = @player.position == @map.exit_position ? true : false
+    on_exit = @player.position == @map.exit_position
+    enemies_dead = @enemies.empty?
+    @win_state = on_exit && enemies_dead
     ''
   end
 

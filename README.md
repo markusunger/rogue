@@ -11,7 +11,7 @@ _A Dungeon Forgotten_ is a [rogue-like](https://en.wikipedia.org/wiki/Roguelike)
 
 ### Overview
 
-You control the `@` symbol. On each floor, enemies (varying red symbols) wait and must be defeated. To climb down to another floor, move to the exit stairs (`¬`). After you successfully passed floor 10, you win the game. If you die, you have to start over.
+You control the `@` symbol. On each floor, enemies (varying red symbols) wait and must be defeated. To climb down to another floor, defeat all enemies and move to the exit stairs (`¬`). After you successfully passed floor 10, you win the game. If you die, you have to start over.
 
 ### Instructions
 

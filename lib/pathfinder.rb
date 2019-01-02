@@ -16,6 +16,10 @@ class Pathfinder
       .to_h
   end
 
+  def full_map(origin, target)
+    BreadthFirstSearch.new(origin, @map).search
+  end
+
   def path_to(origin, target)
     distances = BreadthFirstSearch.new(origin, @map).search
     distances[target][1].first
@@ -52,6 +56,10 @@ class BreadthFirstSearch
         end
       end
     end
+    # returns a hash with the positions as keys and an array
+    # as values that holds (0) the distance to the original tile
+    # and (1) a set of coordinates to travel to get to the 
+    # original tile
     @visited
   end
 end

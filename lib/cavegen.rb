@@ -35,7 +35,9 @@ class CaveGenerator
         @height.times do |x|
           new_map[[x,y]] = WALL_TILE if neighbors(x,y) >= WALL_EVOLUTION
           if neighbors(x,y) <= WALL_STARVE
-            new_map[[x,y]] = FLOOR_TILE unless x == 0 || y == 0 || x == @width - 1 || y == @height - 1
+            unless x == 0 || y == 0 || x == @width - 1 || y == @height - 1
+              new_map[[x,y]] = FLOOR_TILE
+            end
           end
         end
       end
@@ -52,7 +54,11 @@ class CaveGenerator
       [-1, 1], [0, 1],  [1, 1]
     ]
     adjacent.reduce(0) do |count, c|
-      @map.fetch([x+c[0],y+c[1]], WALL_TILE) == WALL_TILE ? count += 1 : count
+      if @map.fetch([x+c[0],y+c[1]], WALL_TILE) == WALL_TILE
+        count += 1
+      else
+        count
+      end
     end
   end
 end

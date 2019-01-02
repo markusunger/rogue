@@ -1,6 +1,6 @@
 require_relative 'map'
 require_relative 'player'
-require_relative 'enemy'
+require_relative 'enemies'
 require_relative 'log'
 require_relative 'action_controller'
 require_relative 'round_actions'
@@ -45,6 +45,7 @@ class Level
     @floor_number = floor_number
     @player.refresh
     prepare_map
+    @log << "You climb deeper down ..."
   end
 
   def draw

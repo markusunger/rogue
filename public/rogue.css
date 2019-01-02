@@ -290,17 +290,18 @@ div.tooltip {
 
 div.tooltip .tooltiptext {
   visibility: hidden;
-  width: 60px;
+  width: 100px;
   background-color: #0d161b;
   color: #C7E8E9;
   border: 1px solid #C7E8E9;
   font-size: 8px;
+  line-height: 10px;
   text-align: center;
   padding: 5px 3px;
   position: absolute;
   bottom: 110%;
   left: 50%;
-  margin-left: -30px;
+  margin-left: -50px;
   z-index: 1;
 }
 

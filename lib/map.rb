@@ -39,14 +39,18 @@ class Map
   end
 
   def add_exit
-    # find corner position for the exit
+    # find corner position for the exit, identified by having just 3 floor neighbors
     suitable = find_free_tiles.select do |position| 
-      walls_near = ADJACENT.reduce(0) do |walls, neighbor|
+      floors_near = ADJACENT.reduce(0) do |floors, neighbor|
         x, y = position
         dx, dy = neighbor
-        @map[[x+dx,y+dy]].is_a?(Wall) ? walls + 1 : walls
+        if @map[[x+dx,y+dy]].is_a?(Floor)
+          floors + 1
+        else
+          floors
+        end
       end
-      walls_near >= 3
+      floors_near == 3
     end
     @map[suitable.sample] = Exit.new
   end
@@ -63,20 +67,25 @@ class Map
   end
 
   def exit_position
-    @map.find { |_, tile| tile.is_a?(Exit) }.to_a.first
+    @map
+      .find { |_, tile| tile.is_a?(Exit) }
+      .to_a
+      .first
   end
 
   def adjacent?(position, other_position)
     x, y = position
-    ADJACENT.any? { |dx, dy| [x+dx,y+dy] == other_position }
+    ADJACENT.any? do |dx, dy|
+      [x+dx,y+dy] == other_position
+    end
   end
 
   def find_enemy_spawn(player_position)
     # selects enemy spawn locations in a certain 
-    # distance to the player (currently 2 to 6 tiles)
+    # distance to the player (currently 3 to 6 tiles)
     p = Pathfinder.new(self)
     p.distances_from(player_position)
-      .select { |k, v| (2..6).cover?(v) }
+      .select { |k, v| (3..6).cover?(v) }
       .to_a
       .sample[0]
   end
@@ -95,7 +104,12 @@ class Map
 
   def closer_to_player(from_position, player_position)
     paths = Pathfinder.new(self)
-    paths.path_to(from_position, player_position)
+    bfs_map = paths.full_map(from_position, player_position)
+    current_range = bfs_map[player_position][0]
+    steps = bfs_map
+      .select { |k, v| adjacent?(k, from_position) && v[0] < current_range }
+      .map { |a, b| a }
+    [bfs_map[player_position][1].first] + steps
   end
 
   def active_tiles_in_range(position, range)
