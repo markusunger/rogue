@@ -30,7 +30,7 @@
   </div>
 
   <div id="map-info-window" class="panel">
-    <p><strong>Floor <%= @state[:floor_number] %></strong></p>
+    <p>Floor <%= @state[:floor_number] %> of 10 in<br><span class="title-small">A Dungeon Forgotten!</span></p>
   </div>
 </div>
 
@@ -56,13 +56,22 @@
   </div>
 
   <div id="skill-window" class="panel">
-    <% player.skills.each_with_index do |skill, i| %>
-      <p>
-        <span class="key"><%= i+1 %></span> <%= skill.name %>
-        (<span class="<%= player.energy >= skill.cost ? "energy-cost-yes" : "energy-cost-no" %>"><%= skill.cost %></span>)<br>
-        &nbsp; <%= skill.description %>
-      </p>
-    <% end %>
+
+    <table class="skills">
+      <tr>
+        <td colspan="2" class="header">Press <span class="key">L</span> for skill selection</td>
+      </tr>
+      <% player.skillset.each_with_index do |skill, i| %>
+        <tr>
+          <td><span class="key"><%= i+1 %></span></td>
+          <td>
+            <%= skill.name %>
+            (<span class="<%= player.energy >= skill.cost ? "energy-cost-yes" : "energy-cost-no" %>"><%= skill.cost %></span>)<br>
+            <%= skill.description %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 
   <div id="log-window" class="panel">

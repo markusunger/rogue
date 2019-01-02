@@ -10,18 +10,19 @@ end
 # methods and stats unique to just the player unit
 
 class Player < Unit
-  attr_accessor :energy, :energy_per_turn, :block, :block_per_turn, :active_skill
-  attr_reader   :skills
+  attr_accessor :energy, :energy_per_turn, :block, :block_per_turn, :active_skill, :skills, :skillset
 
   STARTING_ENERGY = 5 # energy points at the start of each level
   ENERGY_PER_TURN = 1 # energy points to gain at the start of each round
+  ALL_SKILLS = [AimedArrow, DefensiveStance, Fortify, Pierce, ShieldBash, ShieldWall, SpearThrow]
 
   def initialize
     super(symbol: '@', name: 'Player', style: 'player')
     @ap = 1 # basic AP for the player when not using skills
     refresh
 
-    @skills = [ShieldWall.new, AimedArrow.new, SpearThrow.new, Pierce.new, Fortify.new]
+    @skills = [Pierce, DefensiveStance] # starting skills on floor 1
+    @skillset = @skills.map(&:new)
     @active_skill = nil
   end
 
@@ -54,6 +55,18 @@ class Player < Unit
     if @block < 0
       @hp += @block
       @block = 0
+    end
+  end
+
+  def add_random_skill(floor)
+    new_skills = ALL_SKILLS.select do |skill|
+      @skills.none? { |s| s == skill } && skill.new.floors.cover?(floor)
+    end
+    if new_skills.size == 0
+      ''
+    else
+      @skills << new_skills.sample
+      'You have found a new skill!'
     end
   end
 end

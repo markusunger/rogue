@@ -43,3 +43,20 @@ get '/skillreset' do # resets markers and active player skill
   settings.engine.process_queue
   redirect to('/')
 end
+
+get '/skillselect' do # select skills to use in-game
+  @state = settings.engine.draw
+  erb :skills
+end
+
+get '/addskill/:name' do # adds a certain skill to the active skillset
+  settings.engine.request('add_skill', params['name'])
+  settings.engine.process_queue
+  redirect to('/skillselect')
+end
+
+get '/removeskill/:name' do # removes a certain skill to the active skillset
+  settings.engine.request('remove_skill', params['name'])
+  settings.engine.process_queue
+  redirect to('/skillselect')
+end

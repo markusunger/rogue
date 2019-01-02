@@ -25,6 +25,7 @@ class Combat
     enemies.delete_at(del) if del
     unless kill_site == map.exit_position
       map.add_entity(kill_site, :remains) # add splatter effect for dead enemies
+      map.add_entity(kill_site, :loot) # shiny loot
     end
   end
 end

@@ -8,6 +8,7 @@ class ShieldBash < Skill
       cost: 2,
       range: 1,
       target: :enemy,
+      floors: (3..10),
       description: 'stun enemy for 2 rounds'
     )
   end

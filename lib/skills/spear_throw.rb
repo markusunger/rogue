@@ -7,6 +7,7 @@ class SpearThrow < Skill
       cost: 3,
       range: 3,
       target: :enemy,
+      floors: (1..10),
       description: '5 damage up to a range of 3'
     )
   end

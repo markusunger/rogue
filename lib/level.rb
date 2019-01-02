@@ -28,7 +28,7 @@ class Level
   def execute_actions
     reset_markers
     messages = @controller.execute(self)
-    messages.each { |m| @log << m if m.size > 0 }
+    messages.each { |m| @log << m if m && m.size > 0 }
   end
 
   def process_turn

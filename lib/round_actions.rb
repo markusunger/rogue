@@ -73,6 +73,14 @@ module RoundActions
       end
     elsif @map.adjacent?(@player.position, new_position)
       @player.move(new_position, @map)
+      lootable_skills = @map.lootable_skills(new_position)
+      if lootable_skills
+        msg = []
+        lootable_skills.times { msg << @player.add_random_skill(@floor_number) }
+        @map.remove_specific_entities(:loot, new_position)
+        reset_active_skill
+        return msg.shift
+      end
       reset_active_skill
       ''
     else
@@ -108,7 +116,7 @@ module RoundActions
       execute_skill(slot)
     else
       skill_index = slot.to_i - 1
-      skill = @player.skills[skill_index]
+      skill = @player.skillset[skill_index]
       return "Not enough energy to use #{skill.name}." if skill.cost > @player.energy
       @player.active_skill = skill
       return execute_skill(nil) if skill.target == :self
@@ -145,6 +153,19 @@ module RoundActions
 
   def reset_active_skill
     @player.active_skill = nil
+    ''
+  end
+
+  def add_skill(name)
+    # reconstruct class object from its name as a string and instantiate
+    @player.skillset << Object.const_get(name).new
+    ''
+  end
+
+  def remove_skill(name)
+    puts "Removing skill #{name}..."
+    skill = Object.const_get(name)
+    @player.skillset.delete_if { |s| s.is_a?(skill) }
     ''
   end
 

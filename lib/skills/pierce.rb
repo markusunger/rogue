@@ -7,6 +7,7 @@ class Pierce < Skill
       cost: 2,
       range: 1,
       target: :enemy,
+      floors: (1..10),
       description: 'deal 2 damage in melee range'
     )
   end

@@ -7,6 +7,7 @@ class Fortify < Skill
       cost: 3,
       range: 0,
       target: :self,
+      floors: (3..10),
       description: 'provides 8 block'
     )
   end

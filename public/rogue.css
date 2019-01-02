@@ -18,6 +18,16 @@ a:hover {
   text-decoration: none;
 }
 
+p.interactive {
+  color: #2b6fc7;
+}
+
+span.title-small {
+  font-weight: bold;
+  font-style: italic;
+  color: #cf4848;
+}
+
 span.key {
   color: rgb(241, 216, 146);
   background-color: #364751;
@@ -32,6 +42,10 @@ span.energy-cost-no {
   color: #722e2e;
 }
 
+span.equipped {
+  color: #d49a43;
+}
+
 div.tile-container {
   position: relative;
   width: 100%;
@@ -43,6 +57,13 @@ div.enemy-index {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+button {
+  background-color: #10191e;
+  color: rgb(134, 126, 107);
+  font-size: 18px;
+  padding: 1rem;
 }
 
 hr {
@@ -87,6 +108,33 @@ table.stats td.label {
 
 table.stats td.value {
   
+}
+
+table.skills td {
+  padding: 5px;
+  vertical-align: top;
+}
+
+table.skills td:nth-child(1) {
+  padding-bottom: 1rem;
+}
+
+table.skillselect {
+  border: 0;
+  border-spacing: 0;
+}
+
+table.skillselect tr:hover {
+  background-color: #364751;
+  cursor: pointer;
+}
+
+table.skillselect td {
+  padding: 7px;
+}
+
+table.skillselect td.selected {
+  background-color: #283238;
 }
 
 td.wall1 {
@@ -150,6 +198,10 @@ td.remains {
 
 td.bgremains {
   background-color: #1d0808;
+}
+
+td.loot {
+  color: #6bb440;
 }
 
 td.light_normal_0 {
@@ -217,6 +269,7 @@ td.light_normal_2 {
 #info-container {
   width: 480px;
   height: 600px;
+  font-size: 12px;
   line-height: 115%;
   display: flex;
   flex-direction: column;
@@ -229,7 +282,15 @@ td.light_normal_2 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
+}
+
+#skill-container {
+  width: 480px;
+  font-size: 12px;
+  line-height: 140%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 div#map-window {
@@ -247,6 +308,7 @@ div#map-window {
 div #map-info-window {
   margin: 15px 0;
   font-size: 12px;
+  line-height: 170%;
   padding: 1.4rem;
   height: 9rem;
 }
@@ -281,6 +343,15 @@ div#skill-window {
   font-size: 12px;
   line-height: 18px;
   padding: 0.4rem;
+}
+
+div#skill-selection {
+  margin-top: 1rem;
+}
+
+div#footer-button {
+  margin-top: 1rem;
+  text-align: center;
 }
 
 div.tooltip {

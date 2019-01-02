@@ -32,6 +32,10 @@ class ActionController
         messages << level.check_for_loss_state
       when 'win'
         messages << "You climb deeper down ..."
+      when 'add_skill'
+        messages << level.add_skill(action[:param])
+      when 'remove_skill'
+        messages << level.remove_skill(action[:param])
       end
     end
 

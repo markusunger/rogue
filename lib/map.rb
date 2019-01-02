@@ -128,12 +128,22 @@ class Map
       .size > 0 
   end
 
+  def lootable_skills(position)
+    @map[position].entities
+      .select { |name| name == :loot }
+      .size
+  end
+
   def add_entity(position, name)
     @map[position].entities << name
   end
 
   def remove_all_entities(name)
     @map.each { |_, tile| tile.entities.delete(name) }
+  end
+
+  def remove_specific_entities(name, position)
+    @map[position].entities.delete_if { |e| e == name }
   end
 
   def draw(&block)
@@ -151,15 +161,19 @@ class Map
     tile = @map[[x,y]]
     if tile.entities.size > 0
       # sort entities by priority to determine which is displayed (e.g. markers first)
-      e = tile.entities 
-        .sort { |a, b| @entities[b][:priority] <=> @entities[a][:priority] } 
-        .first 
-      {
-        symbol: @entities[e][:symbol] || tile.symbol,
-        style: @entities[e][:style] || tile.style,
-        bgstyle: @entities[e][:bgstyle] || tile.bgstyle,
-        name: e.to_s.capitalize || tile.name
-      }
+      return_hsh = tile.entities 
+        .sort { |a, b| @entities[a][:priority] <=> @entities[b][:priority] } 
+        .each_with_object({}) do |e, hsh|
+          hsh[:symbol] = @entities[e][:symbol] if @entities[e][:symbol]
+          hsh[:style] = @entities[e][:style] if @entities[e][:style]
+          hsh[:bgstyle] = @entities[e][:bgstyle] if @entities[e][:bgstyle]
+          hsh[:name] = e.to_s.capitalize
+        end
+      return_hsh[:symbol] = tile.symbol unless return_hsh[:symbol]
+      return_hsh[:style] = tile.style unless return_hsh[:style]
+      return_hsh[:bgstyle] = tile.bgstyle unless return_hsh[:bgstyle]
+      return_hsh[:name] = tile.name unless return_hsh[:name]
+      return_hsh
     else
     {
       symbol: tile.symbol,

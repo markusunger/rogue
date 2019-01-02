@@ -1,0 +1,37 @@
+<% skills = @state[:player].skills %>
+<% skillset = @state[:player].skillset %>
+<% p skillset %>
+
+<div id="skill-container">
+  <div id="skill-explanation" class="panel">
+    <p><span class="equipped">o</span> marks a currently equipped skill. You can select up to 5 skills by clicking on them to either
+    select or deselect them.</p>
+    <p class="interactive"><%= skillset.size %> of 5 skills equipped.</p>
+  </div>
+
+  <div id="skill-selection" class="panel">
+    <table class="skillselect">
+      <% skills.each do |skill| %>
+        <% in_use = skillset.any? { |s| s.is_a?(skill) } %>
+        <% skill = skill.new %>
+        <tr data-skillname="<%= skill.class %>" data-equipped="<%= in_use %>">
+          <td>
+            <% if in_use %>
+              <span class="equipped">o</span>
+            <% end %>
+          </td>
+          <td>
+            <%= skill.name %>
+            (<%= skill.cost %>)<br>
+            <%= skill.description %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div id="footer-button">
+    <button type="button" id="back-to-game">Back to game</button>
+  </div>
+</div>
+
+<script src="/skills.js"></script>

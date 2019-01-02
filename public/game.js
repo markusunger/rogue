@@ -9,6 +9,7 @@ window.onload = () => {
   let new_pos = '0,0';
   let skill_choice = 0;
   let skill_reset = false;
+  let skill_select = false;
  
   switch(event.key) {
     case 'w':
@@ -35,6 +36,9 @@ window.onload = () => {
     case 'c':
       new_pos = `${x+1},${y+1}`;
       break;
+    case 'l':
+      skill_select = true;
+      break;
     case '1':
       skill_choice = 1;
       break;
@@ -57,6 +61,10 @@ window.onload = () => {
 
   if (skill_reset) {
     window.location.href = '/skillreset';
+  }
+
+  if (skill_select) {
+    window.location.href = '/skillselect'
   }
 
   if (new_pos !== '0,0') {

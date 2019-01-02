@@ -7,6 +7,7 @@ class DefensiveStance < Skill
       cost: 2,
       range: 0,
       target: :self,
+      floors: (1..10),
       description: 'provides 5 block'
     )
   end
