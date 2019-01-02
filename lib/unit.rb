@@ -29,7 +29,6 @@ class Unit
     @effects.each do |effect|
       effect.process_turn(self, enemies, map)
       if effect.rounds_remaining == 0
-        effect.uneffect(self)
         @effects.delete(effect)
         log << "#{self.name} is no longer #{effect.adjective}."
       end
