@@ -1,9 +1,9 @@
 class CaveGenerator
 
-  WALL_CHANCE    = 0.25  # chance for an initial wall
-  ITERATIONS     = 2    # no. of generations for the automaton to simulate
-  WALL_EVOLUTION = 4    # minimum neighbor walls to grow a new one
-  WALL_STARVE    = 3    # minimum neighbor walls to not vanish
+  WALL_CHANCE    = 0.3  # chance for an initial wall
+  ITERATIONS     = 3    # no. of generations for the automaton to simulate
+  WALL_EVOLUTION = 5    # minimum neighbor walls to grow a new one
+  WALL_STARVE    = 1    # minimum neighbor walls to not vanish
 
   FLOOR_TILE     = 'floor'
   WALL_TILE      = 'wall'
@@ -33,7 +33,7 @@ class CaveGenerator
           elsif neighbors(x,y) <= WALL_STARVE
             new_map[[x,y]] = FLOOR_TILE
           else
-            new_map[[x,y]] = FLOOR_TILE
+            new_map[[x,y]] = (2..3).cover?(neighbors(x,y)) ? @map[[x,y]] : FLOOR_TILE
           end
         end
       end
