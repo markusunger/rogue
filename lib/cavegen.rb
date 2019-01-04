@@ -1,9 +1,9 @@
 class CaveGenerator
 
-  WALL_CHANCE    = 0.25 # chance for an initial wall
-  ITERATIONS     = 3    # no. of generations for the automaton to simulate
-  WALL_EVOLUTION = 6    # minimum neighbor walls to grow a new one
-  WALL_STARVE    = 2    # minimum neighbor walls to not vanish
+  WALL_CHANCE    = 0.25  # chance for an initial wall
+  ITERATIONS     = 2    # no. of generations for the automaton to simulate
+  WALL_EVOLUTION = 4    # minimum neighbor walls to grow a new one
+  WALL_STARVE    = 3    # minimum neighbor walls to not vanish
 
   FLOOR_TILE     = 'floor'
   WALL_TILE      = 'wall'
@@ -17,12 +17,7 @@ class CaveGenerator
     @map = Hash.new
     @width.times do |y|
       @height.times do |x|
-        tile = nil
-        if x == 0 || x == @height-1 || y == 0 || y == @width-1
-          tile = WALL_TILE
-        else
-          tile = rand > WALL_CHANCE ? FLOOR_TILE : WALL_TILE
-        end
+        tile = rand > WALL_CHANCE ? FLOOR_TILE : WALL_TILE
         @map[[x,y]] = tile
       end
     end
@@ -30,19 +25,25 @@ class CaveGenerator
 
   def generate
     ITERATIONS.times do
-      new_map = @map.clone
+      new_map = Hash.new
       @width.times do |y|
         @height.times do |x|
-          new_map[[x,y]] = WALL_TILE if neighbors(x,y) >= WALL_EVOLUTION
-          if neighbors(x,y) <= WALL_STARVE
-            unless x == 0 || y == 0 || x == @width - 1 || y == @height - 1
-              new_map[[x,y]] = FLOOR_TILE
-            end
+          if neighbors(x,y) >= WALL_EVOLUTION
+            new_map[[x,y]] = WALL_TILE 
+          elsif neighbors(x,y) <= WALL_STARVE
+            new_map[[x,y]] = FLOOR_TILE
+          else
+            new_map[[x,y]] = FLOOR_TILE
           end
         end
       end
-
       @map = new_map
+    end
+
+    (0..width).each do |y|
+      (0..height). each do |x|
+        @map[[x,y]] = WALL_TILE if x == 0 || x == width-1 || y == 0 || y == width-1
+      end
     end
     @map
   end
