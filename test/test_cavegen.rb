@@ -1,11 +1,11 @@
 require_relative 'cavegen'
 require 'colorize'
 
-x,y = [15,15]
-wall_chance = 0.5
-iterations = 5
+x,y = [80,80]
+wall_chance = 0.55
+iterations = 10
 evolution = 5
-starve = 3
+starve = 2
 
 
 loop do
@@ -17,7 +17,7 @@ loop do
   y.times do |y|
     print "  "
     x.times do |x|
-      map[[x,y]] == '.' ? print('.'.light_yellow) : print('#'.light_black)
+      map[[x,y]] == '.' ? print('.'.black.on_light_black) : print('#'.blue.on_black)
     end
     puts
   end
@@ -29,5 +29,5 @@ loop do
   puts "  Wall removed on: <= #{starve} wall neighbors"
   puts "  Wall kept on == 3 neighbors"
 
-  sleep(0.5)
+  # sleep(0.5)
 end

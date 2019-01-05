@@ -32,7 +32,7 @@ class CaveGenerator
           elsif neighbors(x,y) <= @starve
             new_map[[x,y]] = FLOOR_TILE
           else
-            new_map[[x,y]] = (3..3).cover?(neighbors(x,y)) ? @map[[x,y]] : FLOOR_TILE
+            new_map[[x,y]] = (2..3).cover?(neighbors(x,y)) ? @map[[x,y]] : FLOOR_TILE
           end
         end
       end
