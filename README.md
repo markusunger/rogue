@@ -15,7 +15,7 @@ You control the `@` symbol. On each floor, enemies (varying red symbols) wait an
 
 ### Instructions
 
-Use the `WASD` keys to move in straight lines and `QEYC` to move diagonally.
+Use the `WASD` keys to move in straight lines and `QEZC` (or `QEYC` if you're using the German keyboard layout) to move diagonally.
 
 In order to attack enemies, you have two possibilities: 
 - move directly into them for a weak basic attack
@@ -29,4 +29,4 @@ You start the game with two weak skills. Dead enemies leave loot behind. Pick it
 
 ### Development
 
-See `TODO.md` for an insight what didn't make the current release (hint: a lot) and what could be implemented to flesh the game out.
+See `TODO.md` for an insight into what didn't make the current release (hint: a lot) and what could be implemented to flesh the game out.
