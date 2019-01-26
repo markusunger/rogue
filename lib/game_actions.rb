@@ -186,7 +186,7 @@ module GameActions
     if @floor_number > self.class::FLOORS_TO_WIN
       @game_won = true
       @floor_number = 1
-      @last_round = @level.draw
+      @last_round = draw
       @level = Level.new(@floor_number)
       @has_won = true
     else
