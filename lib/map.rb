@@ -2,10 +2,9 @@ require_relative 'cavegen'
 require_relative 'entities'
 require_relative 'pathfinder'
 
-require_relative 'tiles/tile'
-require_relative 'tiles/floor'
-require_relative 'tiles/wall'
-require_relative 'tiles/exit'
+Dir[File.dirname(__FILE__) + '/tiles/*.rb'].each do |s|
+  require_relative 'tiles/' + File.basename(s, '.rb')
+end
 
 # class Map
 # ---------
@@ -21,6 +20,8 @@ class Map
     [-1, 0],          [1,  0],
     [-1, 1], [0,  1], [1,  1]
   ]
+
+  ENEMY_SPAWN_DISTANCE = (3..6) # distance from player in which enemies spawn
 
   def initialize(width, height)
     @width = width
@@ -82,10 +83,10 @@ class Map
 
   def find_enemy_spawn(player_position)
     # selects enemy spawn locations in a certain 
-    # distance to the player (currently 3 to 6 tiles)
+    # distance to the player
     p = Pathfinder.new(self)
     p.distances_from(player_position)
-      .select { |k, v| (3..6).cover?(v) }
+      .select { |k, v| ENEMY_SPAWN_DISTANCE.cover?(v) }
       .to_a
       .sample[0]
   end
@@ -103,6 +104,7 @@ class Map
   end
 
   def closer_to_player(from_position, player_position)
+    # returns an array of all positions that would be closer to the player
     paths = Pathfinder.new(self)
     bfs_map = paths.full_map(from_position, player_position)
     current_range = bfs_map[player_position][0]
@@ -113,6 +115,7 @@ class Map
   end
 
   def active_tiles_in_range(position, range)
+    # returns an array of all walkable tiles in a certain range
     paths = Pathfinder.new(self)
     paths
       .distances_from(position)
@@ -121,6 +124,7 @@ class Map
   end
 
   def in_range?(range, position, other_position)
+    # checks if a position is in a certain range of another one
     paths = Pathfinder.new(self)
     paths
       .distances_from(position)

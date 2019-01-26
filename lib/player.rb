@@ -19,13 +19,14 @@ class Player < Unit
     PoisonArrow, Pierce, ShieldBash, ShieldWall, SpearThrow, Rejuvenation,
     TastySnack, AxeThrow
   ]
+  STARTING_SKILLS = [Pierce, DefensiveStance] # skills which the player starts with
 
   def initialize
     super(symbol: '@', name: 'Player', style: 'player')
     @ap = 1 # basic AP for the player when not using skills
     refresh
 
-    @skills = [Pierce, DefensiveStance] # starting skills on floor 1
+    @skills =  STARTING_SKILLS
     @skillset = @skills.map(&:new)
     @active_skill = nil
   end
@@ -69,9 +70,11 @@ class Player < Unit
 
   def add_random_skill(floor)
     new_skills = ALL_SKILLS.select do |skill|
+      # check if skill is already in the player's possession
+      # and is appropriate for the current floor
       @skills.none? { |s| s == skill } && skill.new.floors.cover?(floor)
     end
-    if new_skills.size == 0
+    if new_skills.size == 0 # check if there are any skills left to add
       ''
     else
       @skills << new_skills.sample

@@ -347,7 +347,7 @@ div#log-window {
   height: 9rem;
   overflow: auto;
   display: flex;
-  flex-direction:column-reverse;
+  flex-direction: column-reverse;
 }
 
 div#game-stat-window {

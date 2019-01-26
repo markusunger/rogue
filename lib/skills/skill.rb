@@ -13,11 +13,13 @@ class Skill
       floors: (1..10),
       description: 'does absolutely nothing'
     )
+    
     @name   = name
     @cost   = cost
     @range  = range
     @target = target
     @floors = floors
+
     @description = description
   end
 

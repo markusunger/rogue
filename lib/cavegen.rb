@@ -1,9 +1,9 @@
 class CaveGenerator
 
-  WALL_CHANCE    = 0.3  # chance for an initial wall
-  ITERATIONS     = 3    # no. of generations for the automaton to simulate
+  WALL_CHANCE    = 0.25  # chance for an initial wall
+  ITERATIONS     = 7    # no. of generations for the automaton to simulate
   WALL_EVOLUTION = 5    # minimum neighbor walls to grow a new one
-  WALL_STARVE    = 1    # minimum neighbor walls to not vanish
+  WALL_STARVE    = 2    # minimum neighbor walls to not vanish
 
   FLOOR_TILE     = 'floor'
   WALL_TILE      = 'wall'

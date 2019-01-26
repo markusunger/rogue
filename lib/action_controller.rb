@@ -1,3 +1,7 @@
+# class ActionController
+# ----------------------
+# implements a simple FIFO stack to process actions in the correct order
+
 class ActionController
   attr_reader :queue
 
@@ -9,33 +13,30 @@ class ActionController
     @queue << {command: command, param: param}
   end
 
-  def execute(level)
+  def execute(engine)
     messages = []
+    map      = engine.level.map
+    player   = engine.level.player
+    enemies  = engine.level.enemies
 
     until @queue.empty? do
       action = @queue.shift
-
-      case action[:command]
+      
+      messages << case action[:command]
       when 'reset'
-        messages << level.reset
+        engine.reset
       when 'act_player'
-        messages << level.act_player(action[:param])
+        engine.act_player(map, player, enemies, action[:param])
       when 'act_enemy'
-        messages << level.act_enemy(action[:param])
+        engine.act_enemy(map, player, enemies, action[:param])
       when 'handle_skill'
-        messages << level.handle_skill(action[:param])
+        engine.handle_skill(map, player, enemies, action[:param])
       when 'reset_active_skill'
-        messages << level.reset_active_skill
-      when 'check_for_win_state'
-        messages << level.check_for_win_state
-      when 'check_for_loss_state'
-        messages << level.check_for_loss_state
-      when 'win'
-        messages << "You climb deeper down ..."
+        engine.reset_active_skill(player)
       when 'add_skill'
-        messages << level.add_skill(action[:param])
+        engine.add_skill(player, action[:param])
       when 'remove_skill'
-        messages << level.remove_skill(action[:param])
+        engine.remove_skill(player, action[:param])
       end
     end
 
