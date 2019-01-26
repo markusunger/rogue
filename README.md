@@ -2,6 +2,8 @@
 
 _A Dungeon Forgotten_ is a [rogue-like](https://en.wikipedia.org/wiki/Roguelike)-inspired game with a Ruby + Sinatra backend and some light HTML/CSS/JS frontend. The project's scope was mainly influenced by the amount of time I could dedicate to it. Since this is just a christmas side project, don't expect mind-bending architecture choices or lots of features.
 
+![Screenshot](https://raw.githubusercontent.com/markusunger/rogue/master/screenshot.jpg)
+
 ### Installation 
 
 - clone the repo
