@@ -106,12 +106,11 @@ class Map
   def closer_to_player(from_position, player_position)
     # returns an array of all positions that would be closer to the player
     paths = Pathfinder.new(self)
-    bfs_map = paths.full_map(from_position, player_position)
-    current_range = bfs_map[player_position][0]
-    steps = bfs_map
+    bfs_map = paths.full_map(player_position, from_position)
+    current_range = bfs_map[from_position][0]
+    bfs_map
       .select { |k, v| adjacent?(k, from_position) && v[0] < current_range }
       .map { |a, b| a }
-    [bfs_map[player_position][1].first] + steps
   end
 
   def active_tiles_in_range(position, range)

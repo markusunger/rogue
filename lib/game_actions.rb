@@ -74,7 +74,7 @@ module GameActions
       choice = choices.find do |c|
         !anyone_there?(player, enemies, c)
       end
-      enemy.move(choice, map)
+      enemy.move(choice, map) if choice
     elsif decision == :attack
       result = Combat::attack(enemy, player, map, enemies)
       message << result[:msg]

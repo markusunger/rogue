@@ -13,7 +13,7 @@
             data-player="<%= coords == player.position %>">
               <div class="tile-container tooltip">
                 <div class="tooltip tooltiptext">
-                  <%= info.join(', ') %>
+                  <%= info.join(', ') %> @ <%= x %>,<%= y %>
                 </div>
                 <%= tile[:symbol] %>
                 <% @state[:enemies].map { |e| e.position }.each_with_index do |enemy_position, i| %>
